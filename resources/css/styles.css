@@ -1,0 +1,419 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /*font-family: "Roboto, 'helvetica Neue', helvetica, arial, sans-serif";*/
+    font-family: Segoe,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+}
+
+.nav-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    height: 70px;
+    padding: 0 30px;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 100px;
+    color: black !important;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: blue;
+}
+
+/* .nav-flex-1{
+    padding-top: 10px;
+} */
+
+.header-button{
+    background-color: #D90082;
+/*    padding: 10px 15px;*/
+    color: white;
+    border-radius: 5px;
+    border: none;
+    margin: 0;
+    font-weight: 600;
+}
+
+
+.sticky-header{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+    padding:0 130px;
+    height: 70px;
+}
+
+.topnav a {
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+
+
+.topnav a:hover {
+ 
+    color: #21A5F1;
+}
+
+
+
+.postbtn:hover{
+    background-color: #cc1583;
+}
+
+.bottomnav{
+    background-color: black;
+    /* margin-top: 30px; */
+}
+
+.bottomnav a{
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.header-text{
+    margin-top: 1.but50px;
+}
+
+.header-larger-text{
+    font-size: 40px;
+    margin-top: 50px;
+}
+
+.header-smaller-text{
+    font-size: 15px;
+}
+
+
+.hero-background{
+    height: 100vh;
+    width: 100%;
+    background-image: url(../images/skeelmart_pro1.jpg);
+    /*background-image: url(../img/shake_1.jpg);*/
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* opacity: 0.2; */
+    transition: 5s;
+
+    animation-name: animate;
+    animation-direction: alternate-reverse;
+    animation-duration: 30s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes animate{
+    0%{
+        background-image: url(../images/skeelmart_pro2.jpg);
+    }
+
+    20%{
+        background-image: url(../images/skeelmart_pro3.jpg);
+    }
+
+    40%{
+        background-image: url(../images/skeelmart_pro4.jpg);
+    }
+
+    60%{
+        background-image: url(../images/skeelmart_pro1.jpg);
+    }
+
+    80%{
+        background-image: url(../images/skeelmart_pro6.jpg);
+    }
+
+    80%{
+        background-image: url(../images/skeelmart_pro3.jpg);
+    }
+}
+
+.hero-button{
+    padding: 10px 20px;
+    background-color: #cc1583;
+    font-size: 30px;
+    border:none;
+    border-radius: 7px;
+    color: #fff;
+    margin: 10px;
+}
+
+.hero-button:hover{
+    background-color: rgb(118, 13, 18);
+    color: #fff;
+    transform: scale(1, 1.2);
+}
+
+
+
+.buttons{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-right: 15px;
+    width: 
+   
+}
+
+.buttons a{
+    margin: 20px 20px;
+}
+
+.btn .large:hover{
+    background-color: #cc1583 !important;
+}
+
+
+.large{
+    font-size: 30px;
+}
+
+.hero-section{
+    background-color: #858588;
+    /* height: 500px; */
+}
+
+
+.flex-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.api-image1{
+    background-image: url(../images/api-image1.png);
+    height: 25rem;
+    size: cover;
+    padding: 10%;
+}
+
+.api-image2{
+    background-image: url(../images/api-image2.png);
+    height: 25rem;
+    size: cover;
+    padding: 10%;
+}
+
+.footer{
+    background-color: #161E2C;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*How it works page*/
+
+.HIW-herobg{
+    background-image: url(../img/HowItWorks.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 600px;
+
+}
+
+.HIW-text{
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.HIW-hero-text{
+    font-size: 60px !important;
+}
+
+.what-are-you-waiting-for{
+    background-color: #1F2836;
+}
+
+.btn-how-it-works{
+    padding: 5px 10px;
+    background-color: #cc1583;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+/* Media Queries for How-it-works page */
+@media (min-width: 768px) {
+    .HIW-button{
+        display: flex;  
+    } 
+}
+
+@media (max-width: 320px) {
+    .btn-how-it-works{
+        width: 100%;
+        margin-left: 0 !important;
+    }
+}
+
+
+/* 
+
+Responsive Designs - Media Queries
+
+*/
+
+
+@media (max-width: 430px) {
+    .nav-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: white;
+        height: 70px;
+        padding: 0 3px;
+/*        margin-right: 5px;*/
+    }
+
+    .nav-1, .nav-2{
+        display: none;
+    }
+
+    .nav-flex-1 img{
+        width: 30%;
+        margin: 0px !important;
+    }
+
+    .header-button{
+/*        display: none;*/
+    }
+
+    .nav-flex-2 .link-1{
+        margin-left: -100px;
+        margin-right: 1rem;
+    }
+
+    .nav-flex-2 .link-2{
+        margin-right: 2px !important;
+    }
+
+    /*bottom naviagation 2 */
+
+    .bottomnav a {
+      padding: 2px 2px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .container .nav-tabs{
+        margin-right: 15px;
+    }
+
+    /*hero-background section */
+
+    .hero-background{
+        height: 100vh;
+        width: 100%;
+        background-color: black;
+        background-image: none;
+        animation: none;
+        height: 500px;
+    }
+
+    .header-text{
+        margin-top: 10px;
+    }
+
+    .header-larger-text{
+        margin-top: 10px;
+        font-size: 30px;
+    }
+
+    .hero-button{
+        padding: 10px 20px;
+        background-color: #cc1583;
+        font-size: 15px;
+        border:none;
+        border-radius: 7px;
+        color: #fff;
+        margin: 10px auto;
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 768px) and (min-width: 427px) {
+    .sticky-header{
+        padding: 0 10px;
+    }
+
+    .nav-flex-2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .header-button{
+        background-color: #D90082;
+        padding: 10px 15px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        margin-left: 0 !important;
+    }
+
+    .sticky-header{
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background: #fff;
+        height: 70px;
+    }
+}
+
+@media (max-width: 375px)  {
+    .nav-header{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: white;
+        height: 70px;
+    }
+}
+
+/* For Sign up Page */
+.card-body{
+    padding: 5px 5px !important ;
+}
+
+// NEW TEST EDITS for responsiveness
+
+/*@media (max-width: 425px){
+    .nav-header{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .nav-header .nav-flex-2{
+        margin: right: 100px;
+    }
+}*/
+

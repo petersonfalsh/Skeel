@@ -1,0 +1,262 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/light_box_iframe_template.xhtml">
+
+            <ui:define name="title_additional_caption">
+
+
+            </ui:define>
+
+            <ui:define name="additional_css_jscript">
+                <link rel="stylesheet" href="#{request.contextPath}/resources/css/personnel-profile.css"/>
+                <style type="text/css">
+
+                    /*                   body{
+                                            margin-top: 0 !important;
+                                            padding-top: 0 !important;
+                                        }*/
+
+                    .ui-growl { 
+                        left:20px;                    
+                        width: inherit;
+                    }
+
+                    .ui-growl-title ul.msg{
+                        padding: 0px;
+                        margin: 0px;
+                    }
+
+
+                    .ui-growl-item {
+                        display: block;
+                        padding: 10px 15px !important;
+                    }
+
+                    .ui-growl-message {
+                        padding: 0 0 5px 10px;
+                        width: inherit !important; 
+                        float: left; 
+                    }
+                </style>
+
+
+
+                <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/fancybox/jquery.fancybox.css"/>
+
+
+            </ui:define>
+
+
+            <ui:define name="header-caption">
+                <div style="min-height: 60px; background:#DE49A2; color: #fff; font-size: 16px !important; font-weight: 500; padding: 10px 10px !important;
+                     border-top-left-radius: 10px; border-top-right-radius: 10px;">
+
+                    <div class="pull-left">
+                        <i class="fa fa-remove"></i> Withdraw Fund From Wallet
+                    </div>
+
+                    <div class="pull-right" style="color: #000 !important;">
+
+                    </div>
+
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="main_form" prependId="false">
+
+
+                    <div class="row">                       
+                        <div class="col-sm-12" style="min-height: 50px !important;">
+
+                            <h:panelGroup id="newRecordPanel">
+                                <p:messages id="msgFeedback" closable="true"/>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                Request Date (dd/mm/yyyy) <span class="required-field">*</span>
+                                            </h5>
+
+                                            <h:inputText value="#{userWalletFundingBacking.recordDto.transactionDate}"
+                                                         id="txt_transaction_date"
+                                                         styleClass="form-control input-14" autocomplete="off"/>
+                                            <p:watermark for="txt_transaction_date"  value="Transaction Date"/>                                 
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                Wallet Balance: <span class="required-field">*</span>
+                                            </h5>
+
+                                            <h:inputText value="#{adminTemplateSessionBacking.currentUser.walletBalance}"
+                                                         id="txt_wallet_balance" style="background: transparent;"
+                                                         styleClass="form-control input-14" autocomplete="off" disabled="true"/>
+                                            <p:watermark for="txt_wallet_balance"  value="Wallet Balance"/>                                 
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                Bank Name: <span class="required-field">*</span>
+                                            </h5>
+
+                                            <h:inputText value="#{userWalletFundingBacking.recordDto.bankName}"
+                                                         id="txt_bank_name"
+                                                         styleClass="form-control input-14" autocomplete="off"/>
+                                            <p:watermark for="txt_bank_name"  value="Bank name"/>                                 
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                Bank Account Number: <span class="required-field">*</span>
+                                            </h5>
+
+                                            <h:inputText value="#{userWalletFundingBacking.recordDto.bankAccountNo}"
+                                                         id="txt_bank_number"
+                                                         styleClass="form-control input-14" autocomplete="off" maxlength="10"/>
+                                            <p:watermark for="txt_bank_number"  value="Bank Account Number"/>                                 
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                Amount To Withdraw: <span class="required-field">*</span>
+                                            </h5>
+
+                                            <h:inputText value="#{userWalletFundingBacking.recordDto.amountPaid}"
+                                                         id="txt_amount_paid"
+                                                         styleClass="form-control input-14" autocomplete="off"/>
+                                            <p:watermark for="txt_amount_paid"  value="Amount Paid"/>                                 
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <br />
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <p:commandLink styleClass="btn btn-sm btn-sucess" 
+                                                       style="text-transform: none !important; font-size: 15px !important; background: #8E87CC !important; color: #fff;"
+                                                       actionListener="#{userWalletFundingBacking.withdrawAction}"
+                                                       process="newRecordPanel" update="msgFeedback,newRecordPanel">
+                                            <i class="fa fa-send"></i>  Submit
+                                        </p:commandLink>
+
+                                    </div>
+                                </div>        
+
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="addtional_jquery">
+                <script type="text/javascript" src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+                <script src="#{request.contextPath}/vendor/jquery.nicescroll-v3.6.8/jquery.nicescroll.min.js"></script>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#profile-leftnav").niceScroll({cursorcolor: "#009E54"});
+                    });
+                    function openFancyBoxImage(url, title) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: '80%',
+                            height: '90%',
+                            href: '' + url + '',
+                            title: title,
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            }
+                        });
+                        return false;
+                    }
+
+                    function openFancyBoxPdf(url, title) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: 900,
+                            height: 650,
+                            href: '' + url + '',
+                            title: title,
+                            type: 'iframe',
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            }
+                        });
+                        return false;
+                    }
+
+                    function openFancyBoxIframe(url, cWidth, cHeight) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: cWidth,
+                            height: cHeight,
+                            href: '' + url + '',
+                            type: 'iframe',
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            },
+                            afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+                                parent.location.reload(true);
+                            }
+                        });
+                        return false;
+                    }
+                </script>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>

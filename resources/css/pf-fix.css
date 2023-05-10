@@ -1,0 +1,90 @@
+.ui-widget {
+    font-size: 12px !important;
+
+    font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+}
+
+.ui-dialog .ui-dialog-titlebar{
+    padding: .4em .4em .4em 1em;
+    /* position: relative; */
+    /* border: 0; */
+    background: #DE49A2;
+    border: 1px solid #DE49A2;
+
+}
+
+.headlessDialog .ui-dialog-titlebar {
+    display: none !important;
+}
+
+.headlessDialog .ui-dialog-content {
+    background-color: #FFF1A8;
+}
+
+.innerstatus{
+    background-color: #FFF1A8;
+    font: bold 10px arial;
+    color: black;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.innererror{
+    background-color: #FFF1A8;
+    font: bold 12px arial;
+    color: black;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.errorclose{
+    font: bold 12px arial;
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+.ui-widget-content.ui-datatable-even span{
+    color: #000;
+}
+
+.ui-widget-content.ui-datatable-odd span{
+    color: #000;
+}
+
+.ui-autocomplete-input{
+    text-transform: uppercase;
+}
+
+.ui-messages-info-summary, 
+.ui-messages-warn-summary, 
+.ui-messages-error-summary, .ui-messages-fatal-summary, 
+.ui-message-info-summary, .ui-message-warn-summary, .ui-message-error-summary, 
+.ui-message-fatal-summary {    
+    display: block;
+}
+
+.ui-widget-overlay {
+    opacity: .30;
+    filter: Alpha(Opacity=30);
+}
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td {
+    white-space: normal;
+    font-size: 12px;
+}
+
+.ui-datatable thead th{
+    text-align: left;
+}
+
+.ui-datatable .ui-datatable-header{
+    font-size: 14px;
+    text-align: left;
+}
+

@@ -1,0 +1,559 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <meta charset="utf-8"/>
+            <title>SkeelMart v1.0.1</title>
+
+
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/login-assets/css/bootstrap.min.css"/>
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/login-assets/css/buttons.css"/>
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/login-assets/css/login.css"/>           
+
+            <link href="#{request.contextPath}/vendor/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+
+            <link href="#{request.contextPath}/resources/css/pf-fix.css" rel="stylesheet" type="text/css"/> 
+            <link href="#{request.contextPath}/resources/css/form-styles.css" rel="stylesheet" type="text/css"/> 
+            <link href="#{request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css" />
+
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+            <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/bootswatch-v3.3.7/bootstrap-bootswatch-paper-theme.min.css"/>
+
+
+        </h:head>
+
+        <h:body>
+
+            <div class="fixed-header">
+
+                <nav id="navigation-1" class="navbar navbar-default">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                                    aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand navbar-top-brand" href="#{request.contextPath}/index.xhtml" style="color:#000 !important; line-height: inherit; vertical-align: middle; height: 60px;">
+
+                                <span style="background: #F41F9E; color: #fff; padding: 2px 5px; border-radius: 10px;">
+                                    Skeel
+                                </span>
+                                <span style= "background: #8E87CC; color: #fff; padding: 2px 5px;margin-left: -10px;
+                                      border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                                    Mart
+                                </span>
+                                <span style="font-size: 11px; font-style: italic; font-weight: 500; color: #F20091; ">
+                                    .. connecting requests to service delivery ..
+                                </span>
+
+                            </a>
+                        </div>
+                        <div id="navbar-1" class="navbar-collapse collapse">
+                            <!--                            <h:form>-->
+
+
+                            <ul class="nav navbar-nav navbar-right navbar-top-links" style="font-weight: bold;">
+                                <li class="">
+                                    <a href="#" class="user-organization"
+                                       style="">
+                                        How It Works
+                                    </a>
+                                </li>
+
+                                <li class="">
+                                    <a href="#{request.contextPath}/login.xhtml" class="user-organization"
+                                       style="">
+                                        Login
+                                    </a>
+                                </li>
+
+
+
+
+                                <li class="">
+                                    <a href="#{request.contextPath}/new_reg.xhtml" class="user-organization"
+                                       style="">
+                                        Sign Up  
+                                    </a>
+                                </li>
+
+                                <li class="dropdown" style="display: none;">
+                                    <a href="#" class="dropdown-toggle user-identity" data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        Sign Up                                          
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu user-identity-dropdown">                                   
+                                        <li><a href="#{request.contextPath}/client_simple_registration.xhtml">Client</a></li>
+                                        <li role="separator" class="divider"></li>                                    
+                                        <li><a href="#{request.contextPath}/corporate_consultant_registration.xhtml">Corporate Consultant</a></li>
+
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                            <!--                            </h:form>-->
+
+                        </div>
+                        <!--/.nav-collapse -->
+                    </div>
+                </nav>
+            </div>
+
+
+            <div class="row">
+
+                <div class="col-lg-2 col-sm-2 col-md-2"></div>
+
+
+                <div class="col-lg-6 col-sm-6 col-md-6 login-control-wrapper-consultant" style="display: block; padding-left:10px !important;padding-right:10px !important;">
+
+                    <br />
+
+
+                    <div>
+                        <div style="text-align: center;">
+                            <div id="skeel-mart-logo">
+                                <span>Skeel</span>
+                                <span>Mart</span>
+                            </div>
+                            <span class="skeelmart-slogan">
+                                .. connecting requests to service delivery ..
+                            </span>
+                        </div>
+
+                        <div style="display: block; text-align: center" class="text-f-24 text-font-weight-400 pad-t-20 login-sub-title">
+                            Consultant Registration
+                        </div>
+
+                    </div>
+
+                    <br /><br />
+
+                    <h:form prependId="false" style="margin: 0; padding: 0;" class="form-inline" enctype="multipart/form-data">
+                        <h:panelGroup id="newPanel" layout="block">
+                            <p:growl id="growlMsg" escape="false"/>
+
+
+                            <div class="row">
+
+                                <div style="display: block; text-align: justify; " class="col-12 col-sm-12 col-md-12 text-f-14 text-font-weight-400 pad-t-20 login-sub-title pink-color">
+                                    Basic Information
+                                </div><br/>
+                                <div class="clearfix"></div>
+                                <div  style="border-bottom: 1px solid #8E87CC; margin-left:10px !important; width: 97%;"></div>
+
+                                <div class="sepdiv20"></div>
+
+
+                                <div class="form-group">
+                                    <h:outputLabel for="txt_surname" style="text-align: left !important; padding-left: 20px; font-size: 14px; font-weight: 600; color: #000;">
+                                        Last Name: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputText id="txt_surname" 
+                                                 value="#{consultantsRegistrationBacking.recordDto.lastName}" style="border: 1px solid #cbc9c9;color: #000;
+                                                 border-radius: 15px; height: 40px; width: 310px; padding: 0 20px;font-weight: lighter;" />                                        
+
+
+                                    <h:outputLabel for="txt_firstName" style="text-align: left !important; padding-left: 60px; padding-right: 15px; font-size: 14px; font-weight: 600; color: #000">
+                                        First Name: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputText id="txt_firstName" 
+                                                 value="#{consultantsRegistrationBacking.recordDto.firstName}" style="border: 1px solid #cbc9c9;
+                                                 border-radius: 15px;height: 40px; width: 350px; padding: 0 20px;font-weight: lighter;" />
+                                </div>
+
+                                <div class="sepdiv20"></div>
+
+                                <div class="form-group" style="display: none;">
+                                    <h:outputLabel for="txt_year_of_incorporation" style="text-align: left !important; padding-left: 20px; font-size: 14px; font-weight: 600; color: #000;">
+                                        Incorporation Year: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputText id="txt_year_of_incorporation" 
+                                                 value="#{consultantsRegistrationBacking.recordDto.companyYearOfIncorporation}" style="border: 1px solid #cbc9c9;color: #000;
+                                                 border-radius: 15px;height: 40px;padding: 0 20px;font-weight: lighter; width: 320px !important;" />  
+
+                                    <h:outputLabel  style="text-align: left !important; padding-left: 20px; font-size: 14px; font-weight: 600; color: #000;">
+                                        Company's Profile (.pdf only) <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <p:fileUpload value="#{consultantsRegistrationBacking.file}" mode="simple" skinSimple="true" />    
+
+                                </div>
+
+
+                                <div style="display: block; text-align: justify;" class="col-12 col-sm-12 col-md-12 text-f-14 text-font-weight-400 pad-t-20 login-sub-title pink-color">
+                                    Contact Information
+                                </div>
+                                <div class="clearfix"></div>
+                                <div  style="border-bottom: 1px solid #8E87CC; margin-left:10px !important; width: 97%;"></div>
+                                <div class="sepdiv20"></div>
+                                <div class="form-group">
+                                    <h:outputLabel for="txt_phone_number" style="text-align: left !important; padding-left: 20px; padding-right: 35px; font-size: 14px; font-weight: 600; color: #000;">
+                                        Phone No: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputText id="txt_phone_number" 
+                                                 value="#{consultantsRegistrationBacking.recordDto.phoneNumber}" style="border: 1px solid #cbc9c9;color: #000;
+                                                 border-radius: 15px;height: 40px; width: 300px; padding: 0 20px;font-weight: lighter;" />                                        
+
+
+                                    <h:outputLabel for="txt_email_address" style="text-align: left !important; padding-left: 20px; font-size: 14px; font-weight: 600; color: #000">
+                                        E-mail Address: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputText id="txt_email_address" 
+                                                 value="#{consultantsRegistrationBacking.recordDto.emailAddress}" style="border: 1px solid #cbc9c9;
+                                                 border-radius: 15px;height: 40px;padding: 0 20px;font-weight: lighter; width: 355px;" />
+                                </div>
+
+                                <div class="sepdiv20"></div>
+                                <div class="form-group">
+                                    <h:outputLabel for="txt_password" style="text-align: left !important; padding-left: 20px; padding-right: 35px; font-size: 14px; font-weight: 600; color: #000;">
+                                        Password: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputSecret id="txt_password" 
+                                                   value="#{consultantsRegistrationBacking.recordDto.userPlainPassword}" style="border: 1px solid #cbc9c9;color: #000;
+                                                   border-radius: 15px;height: 40px; width: 300px; padding: 0 20px;font-weight: lighter;" />                                        
+
+
+                                    <h:outputLabel for="txt_confirm_password" style="text-align: left !important; padding-left: 20px; font-size: 14px; font-weight: 600; color: #000">
+                                        Confirm Password: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputSecret id="txt_confirm_password" 
+                                                   value="#{consultantsRegistrationBacking.recordDto.userConfirmPlainPassword}" style="border: 1px solid #cbc9c9;
+                                                   border-radius: 15px;height: 40px;padding: 0 20px;font-weight: lighter; width: 335px;" />
+                                </div>
+
+
+                                <div class="sepdiv20"></div>
+
+                                <div class="form-group">
+                                    <h:outputLabel for="txt_office_address" style="text-align: left !important; padding-left: 20px;padding-right: 40px; font-size: 14px; font-weight: 600; color: #000;">
+                                        Address: <span class="required" style="padding-right: 10px !important;">*</span>
+                                    </h:outputLabel>
+                                    <h:inputText id="txt_office_address" 
+                                                 value="#{consultantsRegistrationBacking.recordDto.companyAddress}" style="border: 1px solid #cbc9c9;color: #000;
+                                                 border-radius: 15px;height: 40px;padding: 0 20px;font-weight: lighter; width: 805px !important;" />   
+
+
+
+
+                                </div>
+
+                                <div style="display: block; text-align: justify;" class="col-12 col-sm-12 col-md-12 text-f-14 text-font-weight-400 pad-t-20 login-sub-title pink-color">
+                                    Consultation Information
+                                </div>
+                                <div class="clearfix"></div>
+                                <div  style="border-bottom: 1px solid #8E87CC; margin-left:10px !important; width: 97%;"></div>
+                                <div class="sepdiv20"></div>
+
+                                <div class="col-12 col-lg-12 col-sm-12 col-md-12">
+                                    <div class="col-5 col-lg-5 col-sm-5 col-md-5">
+                                        <h:panelGroup layout="block" id="specializationPanel" style="width: 445px !important;">
+                                            <h:inputHidden id="txt_specialization_area" />
+                                            <p:message for="txt_specialization_area" />
+                                            <br/>
+                                            <h:outputLabel style="text-align: left !important; font-size: 14px; font-weight: 600; color: #000;">
+                                                Specialization: <span class="required" style="padding-right: 10px !important;">*</span>
+                                            </h:outputLabel>
+
+                                            <p:commandLink  styleClass="btn btn-info pull-right"
+                                                            oncomplete="PF('newSpecializationDialog').show()"
+                                                            update="newSpecializationDialogPanel"
+                                                            style="color: #fff; text-transform: none !important; margin-bottom: 10px !important; font-weight: 600;
+                                                            background: #0D96D4;">
+                                                Add Specialization <i class="fa fa-plus"></i>
+                                            </p:commandLink>
+
+                                            <br />
+                                            <table class="table table-bordered">
+                                                <thead>
+
+                                                    <th>Area of Specialization</th>
+                                                    <th></th>
+
+                                                </thead>
+
+                                                <tbody>
+                                                    <ui:repeat var="record" value="#{consultantsRegistrationBacking.recordDto.userSpecialization}" varStatus="serialNo" >
+                                                        <tr>
+
+                                                            <td>
+                                                                #{record.areaOfSpecializationDescription}
+
+                                                            </td>
+                                                            <td>     
+                                                                <p:commandLink 
+                                                                    styleClass="gridlinks btn btn-sm btn-danger" style="color: #fff;"
+                                                                    action="#{consultantsRegistrationBacking.removeAreaofSpecializationData(record.tempId)}"
+                                                                    process="@form:specializationPanel" update="@form:specializationPanel">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </p:commandLink>
+                                                            </td>
+                                                        </tr>
+                                                    </ui:repeat>
+
+
+                                                </tbody>
+                                            </table>    
+                                        </h:panelGroup>
+                                    </div>
+
+
+                                    <div class="col-1 col-lg-1 col-sm-1 col-md-1"></div>
+
+
+                                    <div class="col-5 col-lg-5 col-sm-5 col-md-5">
+                                        <h:panelGroup layout="block" id="servicePanel" style="width: 445px !important;">
+                                            <h:inputHidden id="txt_service_area" />
+                                            <p:message for="txt_service_area" />
+                                            <br/>
+                                            <h:outputLabel style="text-align: left !important; font-size: 14px; font-weight: 600; color: #000;">
+                                                Service(s) to Render: <span class="required" style="padding-right: 10px !important;">*</span>
+                                            </h:outputLabel>
+
+                                            <p:commandLink  styleClass="btn btn-info pull-right"
+                                                            oncomplete="PF('newServiceDialog').show()"
+                                                            update="newServiceDialogPanel"
+                                                            style="color: #fff; text-transform: none !important; margin-bottom: 10px !important; font-weight: 600;
+                                                            background: #0D96D4;">
+                                                Add Service <i class="fa fa-plus"></i>
+                                            </p:commandLink>
+
+                                            <br />
+                                            <table class="table table-bordered" style="width: 700px !important;">
+                                                <thead>                                                    
+                                                    <th>Rendered Service(s)</th>
+                                                    <th></th>
+                                                </thead>
+
+                                                <tbody>
+                                                    <ui:repeat var="serviceRecord" value="#{consultantsRegistrationBacking.recordDto.userServices}" varStatus="serialNo" >
+                                                        <tr>
+                                                            <td>
+                                                                #{serviceRecord.serviceDescription}
+
+                                                            </td>
+                                                            <td>
+                                                                <p:commandLink 
+                                                                    styleClass="gridlinks btn btn-sm btn-danger" style="color: #fff;"
+                                                                    action="#{consultantsRegistrationBacking.removeServiceData(serviceRecord.tempId)}"
+                                                                    process="@form:servicePanel" update="@form:servicePanel">
+                                                                    <i class="fa fa-trash"></i>
+                                                                </p:commandLink>
+                                                            </td>
+                                                        </tr>
+                                                    </ui:repeat>
+
+                                                </tbody>
+                                            </table>     
+
+                                        </h:panelGroup>
+                                    </div>
+                                </div>
+                            </div><!-- End ROW CLASS -->
+
+                            <div class="sepdiv20"></div>
+                            <div class="sepdiv20"></div>
+
+                            <p:commandLink class="btn btn-success btn-block action-button pull-right"
+                                           actionListener="#{consultantsRegistrationBacking.createAction}"
+                                           process="newPanel" update="newPanel">
+
+                                <span style="font-size: 20px; font-weight: lighter; text-transform: none !important;width: 100% !important;">
+                                    <i class="fa fa-send"></i>
+                                    Create Account
+                                </span>
+                            </p:commandLink>
+                        </h:panelGroup>
+
+                        <div class="sepdiv40"></div>
+                        <br /><br />
+
+                        <div class="login-form-footer-wrapper text-f-14">
+                            <div id="social-media" class="flex-div-cell">
+                                <i class="fa fa-facebook pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                                <i class="fa fa-google pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                                <i class="fa fa-instagram pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                                <i class="fa fa-telegram pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+
+                            </div>
+
+                            <div id="other-nav-menu" class="flex-div-cell">
+                                <span class="hover-dec">
+                                    <a href="#{request.contextPath}/login.xhtml">
+                                        Log In
+                                    </a>
+                                </span> |
+                                <span class="hover-dec">
+                                    <a href="#">
+                                        Forgot Password
+                                    </a>
+                                </span>
+
+                            </div>
+                        </div>
+
+                        <!-- NEW Area of Specialization DIALOG -->
+                        <p:dialog id="new_specialization_dialog" header="Add Specialization" widgetVar="newSpecializationDialog" resizable="false"  
+                                  width="700" modal="true" position='center top'>  
+                            <h:panelGroup id="newSpecializationDialogPanel">  
+                                <p:messages globalOnly="true"/>
+                                <br />
+                                <table class="app-formtable">                                    
+                                    <tr>
+                                        <td class="app-label">Specialization<span class="required-indicator">*</span></td>
+                                        <td colspan="4">
+                                            <h:selectOneMenu value="#{consultantsRegistrationBacking.newSpecializationDto.areaOfSpecializationId}"
+                                                             style="width: 500px; border: 1px solid #fefefe; min-height: 40px !important; font-size: 14px !important;">                                       
+                                                <f:selectItem itemLabel="-Choose Area of Specialization-" itemValue="" />
+                                                <f:selectItems value="#{applicationBackingCode.specializationAreas}" />
+                                            </h:selectOneMenu>
+                                        </td>
+                                    </tr>  
+
+
+
+                                    <tr>
+                                        <td class="app-label"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>                                    
+
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <p:commandLink styleClass="btn btn-primary"
+                                                           style="color: #fff; text-transform: none !important;"
+                                                           actionListener="#{consultantsRegistrationBacking.addNewSpecializationAreaData}"
+                                                           process="newSpecializationDialogPanel"
+                                                           update="newSpecializationDialogPanel,specializationPanel">
+                                                <i class="fa fa-send"></i> Add Specialization
+                                            </p:commandLink>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="app-label"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>              
+                                </table>
+
+                            </h:panelGroup>  
+                        </p:dialog> 
+                        <!-- END NEW Area of Specialization DIALOG -->
+
+                        <!-- NEW Services Rendered DIALOG -->
+                        <p:dialog id="new_service_dialog" header="Add Services" widgetVar="newServiceDialog" resizable="false"  
+                                  width="700" modal="true" position='center top'>  
+                            <h:panelGroup id="newServiceDialogPanel">  
+                                <p:messages globalOnly="true"/>
+                                <br />
+                                <table class="app-formtable">                                    
+                                    <tr>
+                                        <td class="app-label">Service: <span class="required-indicator">*</span></td>
+                                        <td colspan="4">
+                                            <h:selectOneMenu value="#{consultantsRegistrationBacking.newServiceDto.serviceId}"
+                                                             style="width: 500px; border: 1px solid #fefefe; min-height: 40px !important; font-size: 14px !important;">                                       
+                                                <f:selectItem itemLabel="-Choose Service You Can Render-" itemValue="" />
+                                                <f:selectItems value="#{applicationBackingCode.serviceAreas}" />
+                                            </h:selectOneMenu>
+                                        </td>
+                                    </tr>  
+
+                                    <tr>
+                                        <td class="app-label"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>                                    
+
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <p:commandLink styleClass="btn btn-primary"
+                                                           style="color: #fff; text-transform: none !important;"
+                                                           actionListener="#{consultantsRegistrationBacking.addNewUserServicesData}"
+                                                           process="newServiceDialogPanel"
+                                                           update="newServiceDialogPanel,servicePanel">
+                                                <i class="fa fa-send"></i> Add Service
+                                            </p:commandLink>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="app-label"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>              
+                                </table>
+
+                            </h:panelGroup>  
+                        </p:dialog> 
+                        <!-- END NEW Area of Specialization DIALOG -->
+
+
+
+
+
+                    </h:form>
+
+                    <br /><br /><br />
+
+
+
+                </div>
+
+                <div class="col-lg-2 col-sm-2 col-md-2"></div>
+            </div>
+
+
+
+            <!--
+                        <p:ajaxStatus onstart="PF('statusDialog').show();" onsuccess="PF('statusDialog').hide();"
+                                      onerror="PF('statusDialog').hide();PF('errorDialog').show();"/>
+            
+                        <p:dialog modal="true" widgetVar="statusDialog" header="Status" id="loading-div"
+                                  draggable="false" closable="false" styleClass="headlessDialog" width="130" resizable="false">
+                            <div class="innerstatus">
+            
+                                <h:graphicImage value="/login-assets/images/239.GIF" /> 
+                                ...LOADING...
+                            </div>
+                        </p:dialog>
+            
+                        <p:dialog modal="true" widgetVar="errorDialog" header="Status" id="time-out-div"
+                                  draggable="false" closable="false" styleClass="headlessDialog" width="200" resizable="false">
+                            <div class="innererror">
+                                Ooops!, Your request timed out. <br/>Try It Again. Thanks!.<br/>
+                                <a href="#" onclick="PF('errorDialog').hide();">
+                                    <span class="errorclose">Close</span>
+                                </a>
+                            </div>
+                        </p:dialog>-->
+
+
+            <script src="#{request.contextPath}/vendor/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+            <script src="#{request.contextPath}/resources/js/app.js"></script>
+
+        </h:body>
+
+    </f:view>
+</html>
+

@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/light_box_iframe_template.xhtml">
+
+            <ui:define name="title_additional_caption">
+
+
+            </ui:define>
+
+            <ui:define name="additional_css_jscript">
+                <link rel="stylesheet" href="#{request.contextPath}/resources/css/personnel-profile.css"/>
+                <style type="text/css">
+
+                    /*                   body{
+                                            margin-top: 0 !important;
+                                            padding-top: 0 !important;
+                                        }*/
+
+                    .ui-growl { 
+                        left:20px;                    
+                        width: inherit;
+                    }
+
+                    .ui-growl-title ul.msg{
+                        padding: 0px;
+                        margin: 0px;
+                    }
+
+
+                    .ui-growl-item {
+                        display: block;
+                        padding: 10px 15px !important;
+                    }
+
+                    .ui-growl-message {
+                        padding: 0 0 5px 10px;
+                        width: inherit !important; 
+                        float: left; 
+                    }
+                </style>
+
+
+
+                <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/fancybox/jquery.fancybox.css"/>
+
+
+            </ui:define>
+
+
+            <ui:define name="header-caption">
+                <div style="min-height: 60px; background:#4CAF50; color: #fff; font-size: 16px !important; font-weight: 500; padding: 10px 10px !important;
+                     border-top-left-radius: 10px; border-top-right-radius: 10px;">
+
+                    <div class="pull-left">
+                        <i class="fa fa-briefcase"></i> View and Send Job Completed to Client 
+                    </div>
+
+                    <div class="pull-right" style="color: #000 !important;">
+                        Service Type:  #{viewJobServiceRequestDetailsBacking.recordDto.serviceDescription}
+                    </div>
+
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="main_form" prependId="false">
+                    <p:messages id="msgFeedback" closable="true"/>
+
+
+                    <div class="row">
+                        <div class="col-sm-3" style="min-height: 50px !important; background: #E8EAED;">
+                            <div class="table-no-white-wrapper" style="margin-top:10px;">
+                                <table class="table table-bordered table-hover personnel-list" style="width: 400px !important;">
+
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">
+                                                Job Request tracker
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr>
+                                            <td>Assigned To Consultant</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.assignedToConsultant eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.assignedToConsultant eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Accepted By Consultant</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptedByConsultant eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptedByConsultant eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Invoice Sent to Client</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobInvoiceForwardedToClient eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobInvoiceForwardedToClient eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+
+                                        <tr>
+                                            <td>Fee Accepted By Client</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptThePrice eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptThePrice eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Submitted by Consultant</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobCompletedByConsultant eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobCompletedByConsultant eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Posted to client</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptanceForwardToClient eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptanceForwardToClient eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Job accepted by client</td>
+
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptJobDone eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptJobDone eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Job Completed</td>
+                                            <td width="70">
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptJobDone eq 'Y'}">
+                                                    Yes
+                                                </h:outputLabel>
+
+                                                <h:outputLabel rendered="#{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptJobDone eq 'N'}">
+                                                    No
+                                                </h:outputLabel>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-9" style="min-height: 50px !important;">
+                            <h:panelGroup id="clientInvoicePanel">                              
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+
+                                            <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                Job Description  <i class="fa fa-check"></i>
+                                            </h5>
+
+                                            <p style="text-align: justify;">
+                                                #{viewJobServiceRequestDetailsBacking.recordDto.jobDescription}
+                                            </p>
+
+                                            <div class="pull-left">
+                                                <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                    Date Posted  <i class="fa fa-calendar"></i>
+                                                </h5>
+                                                <p>
+                                                    #{viewJobServiceRequestDetailsBacking.recordDto.jobRequestedDate}
+                                                </p>
+
+                                            </div>
+
+                                            <div class="pull-right">
+                                                <h5 style="font-weight: bold; font-size: 14px !important;">
+                                                    Client Expected Delivery Date  <i class="fa fa-calendar"></i>
+                                                </h5>
+                                                <p>
+                                                    #{viewJobServiceRequestDetailsBacking.recordDto.clientExpectedDateOfDelivery}
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <h4>Consultant Feedback</h4>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+                                            <div class="pull-left">
+                                                <h5 style="font-weight: 500; font-size: 14px !important; text-transform: none !important;" class="btn btn-danger">
+                                                    Download Job File  <i class="fa fa-cloud-download"></i>
+                                                </h5>
+                                                <p style="font-size: 20px !important;">   
+
+                                                    <a href="#{viewJobServiceRequestDetailsBacking.recordDto.fileDownloadURL}">
+                                                        Click here to download the file
+                                                    </a>
+                                                    <br />
+                                                    #{viewJobServiceRequestDetailsBacking.recordDto.fileDownloadURL}
+                                                </p>
+
+
+
+                                            </div>
+
+                                            <div class="pull-right" style="display: none;">
+                                                <h5 style="font-weight: 500; font-size: 14px !important; text-transform: none !important;" class="btn btn-warning">
+                                                    Consultant Job Fee  <i class="fa fa-money"></i>
+                                                </h5>
+                                                <p style="font-size: 30px !important;">
+                                                    ##{viewJobServiceRequestDetailsBacking.recordDto.jobConsultancyFee}
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div>
+
+                                            <p:commandLink styleClass="btn btn-sm btn-success" 
+                                                           style="text-transform: none; font-size: 18px !important; 
+                                                           display: #{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobCompletedByConsultant eq 'Y'
+                                                                      and viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptanceForwardToClient eq 'N' ? 'block':'none'}; font-weight: 400;"
+                                                           actionListener="#{viewJobServiceRequestDetailsBacking.sendJobDoneToClient}"
+                                                           process="clientInvoicePanel" update="msgFeedback,clientInvoicePanel">
+                                                Forward Completed Job To Client <i class="fa fa-send-o"></i> 
+                                            </p:commandLink>
+
+
+                                            <div class="btn btn-sm btn-warning" 
+                                                 style="text-transform: none; font-size: 18px !important; 
+                                                 display: #{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptanceForwardToClient eq 'Y' 
+                                                            and  viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptJobDone eq 'N' ? 'block':'none'}; font-weight: 400;">
+                                                Job Completion Already Forwarded To Client. Waiting for the Client Acceptance  <i class="fa fa-check"></i> 
+                                            </div>
+
+                                            <div class="btn btn-sm btn-default" 
+                                                 style="text-transform: none; font-size: 18px !important; 
+                                                 display: #{viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.jobAcceptanceForwardToClient eq 'Y' 
+                                                            and  viewJobServiceRequestDetailsBacking.recordDto.jobRequestTrackerDTO.clientAcceptJobDone eq 'Y' ? 'block':'none'}; font-weight: 400;">
+                                                Job Accepted by the Client  <i class="fa fa-check"></i> 
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> 
+                            </h:panelGroup>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+
+            <ui:define name="addtional_jquery">
+                <script type="text/javascript" src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+                <script src="#{request.contextPath}/vendor/jquery.nicescroll-v3.6.8/jquery.nicescroll.min.js"></script>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#profile-leftnav").niceScroll({cursorcolor: "#009E54"});
+                    });
+                    function openFancyBoxImage(url, title) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: '80%',
+                            height: '90%',
+                            href: '' + url + '',
+                            title: title,
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            }
+                        });
+                        return false;
+                    }
+
+                    function openFancyBoxPdf(url, title) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: 900,
+                            height: 650,
+                            href: '' + url + '',
+                            title: title,
+                            type: 'iframe',
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            }
+                        });
+                        return false;
+                    }
+
+                    function openFancyBoxIframe(url, cWidth, cHeight) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: cWidth,
+                            height: cHeight,
+                            href: '' + url + '',
+                            type: 'iframe',
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            },
+                            afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+                                parent.location.reload(true);
+                            }
+                        });
+                        return false;
+                    }
+                </script>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>

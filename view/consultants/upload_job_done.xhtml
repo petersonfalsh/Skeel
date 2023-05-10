@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+      
+        
+        <ui:composition template="../../WEB-INF/templates/light_box_iframe_template.xhtml">
+            <ui:define name="title_additional_caption">
+
+            </ui:define>
+
+            <ui:define name="additional_css_jscript">
+                <link rel="stylesheet" href="#{request.contextPath}/resources/css/personnel-profile.css"/>
+                <style type="text/css">
+                    .ui-growl { 
+                        left:20px;                    
+                        width: inherit;
+                    }
+
+                    .ui-growl-title ul.msg{
+                        padding: 0px;
+                        margin: 0px;
+                    }
+
+
+                    .ui-growl-item {
+                        display: block;
+                        padding: 10px 15px !important;
+                    }
+
+                    .ui-growl-message {
+                        padding: 0 0 5px 10px;
+                        width: inherit !important; 
+                        float: left; 
+                    }
+
+                    .cp-datagriddiv{
+                        width: 100%;
+                        /*    overflow: scroll;*/
+                    }
+
+                    .cp-xside-block-simple-heading {
+                        background: none;
+                        border: 0;
+                        border-bottom: 1px solid #000;
+                        color: #000;
+                        font-weight: 400;
+                        line-height: 20px;
+                        margin: 0 0 20px;
+                        padding: 0 0 10px;
+                        text-transform: none;
+                        font-family: 'Roboto',sans-serif;
+                    }
+
+                    .cp-xside-block-simple-heading .bigtitle{
+                        font-size: 17px;
+                    }
+
+                    .dialog-bigtxt{
+                        font-size: 14px;
+                        font-weight: bold;
+                    }
+
+                    .dialog-smalltxt{
+                        font-size: 12px;
+                    }
+
+                    /*FEATURED STUFF*/
+                </style>
+
+
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="main_form" prependId="false" enctype="multipart/form-data">     
+
+                    <div class="row">
+                        <div class="col-sm-12" style="height: 50px; background: #F41F9E; color: #fff;">
+                            <div  style="font-size: 15px !important; font-weight: bolder !important;">
+                                <i class="fa fa-cloud-upload"></i> Upload Job Done 
+                                <span style="font-size: 20px !important; font-weight: 400;">
+                                   
+                                </span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12">
+                            <p:messages id="contentfilemsg" closable="true"/>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td valign="top" width="595">
+
+                                            <h:panelGroup id="new-record-panel" layout="block">
+
+
+
+                                                <div class="v-sep-10"></div>
+
+                                                <div class="cp-xside-block-simple-heading" style="font-weight: bold;">
+                                                    <span class="bigtitle">Job Description:</span>
+                                                </div>
+
+                                                <span style="font-size: 20px !important;">                                                   
+                                                    #{uploadJobDoneBacking.recordDto.jobDescription}
+                                                </span>
+
+                                                <div class="v-sep-10"></div><br />
+
+                                                <div class="cp-xside-block-simple-heading" style="font-weight: bold;">
+                                                    <span class="bigtitle">Step 1:</span> Upload Job File (Required) zip file only
+                                                </div>
+                                                <div class="uploaddiv">
+                                                     <p:messages id="contentfileUploadmsg" closable="true"/>
+
+                                                     <p:fileUpload mode="advanced" fileUploadListener="#{uploadJobDoneBacking.handleJobDoneFileUpload}"
+                                                                  sizeLimit="1000000000"
+                                                                  allowTypes="/(\.|\/)(zip)$/"
+                                                                  id="contentfile" process="@form" update="contentfileUploadmsg"/> 
+                                                </div>
+
+                                                <div class="v-sep-10"></div><br />
+                                                <div class="cp-xside-block-simple-heading" style="font-weight: bold;">
+                                                    <span class="bigtitle">Step 2:</span> Submit Uploaded Job (Required)
+                                                </div>
+
+                                                <p:commandLink styleClass="btn btn-success" 
+                                                               actionListener="#{uploadJobDoneBacking.submitUploadedJobDone}"
+                                                               process="new-record-panel" update="new-record-panel,contentfilemsg">
+                                                    <i class="fa fa-cloud-upload"></i> Submit Uploaded Job
+                                                </p:commandLink>
+
+
+                                            </h:panelGroup>
+
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+
+                </h:form>
+            </ui:define>
+
+            <ui:define name="addtional_jquery">
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,526 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jan 3, 2023, 1:02:10 PM
+    Author     : Olabode Moses <IT-GAINS Nigeria Limited>
+*/
+
+
+.border-selection-box{    
+    border: 1px solid #c2c2d2;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+
+.sign-up-action-button-outline{
+    padding: 15px;
+    border-radius: 50px;
+    border: 1px solid #8A7FC8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.sign-up-action-button-outline:hover{
+    border: 2px solid #8A7FC8;
+}
+
+.sign-up-action-button{
+    padding: 15px;
+    border-radius: 50px;
+    background:#8A7FC8 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.action-button{
+    width: 420px !important;
+    padding: 15px;
+    border-radius: 20px !important;
+    background: #8A7FC8 !important;
+    border: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #f1f2f3;    
+}
+
+.login-control-wrapper{
+    min-height: 90px; 
+    background: #fff;
+    border: 1px solid #cbc9c9;
+    border-radius: 20px; 
+    max-width: 600px !important;
+    min-height: 150px !important;
+}
+
+.login-control-wrapper-consultant{
+    min-height: 90px; 
+    background: #fff;
+    border: 1px solid #cbc9c9;
+    border-radius: 20px;    
+    min-height: 150px !important;
+}
+
+#login-header-wrapper{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.login-text-control{
+    border: 1px solid #cbc9c9; 
+    width: 420px !important; 
+    border-radius: 15px; 
+    height: 40px; 
+    padding: 0 20px; 
+    color: #cbc9c9; 
+    font-weight: lighter;
+}
+
+#skeel-mart-logo{
+    display: block;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#skeel-mart-logo span:first-child{
+    background: #F41F9E;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+#skeel-mart-logo span:nth-child(2){
+    background: #8E87CC;
+    color: #fff;
+    padding:8px 5px;
+    margin-left: -10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.skeelmart-slogan{
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 500;
+    color: #F20091;
+}
+
+.required{
+    color: red;
+}
+
+.content-wrapper{
+    margin-top: 80px;
+    color: white;
+    font-weight: normal;
+    background: #fff;
+    width: 100%;
+}
+
+
+.login-content-wrapper{
+    margin-top: 80px;
+    font-weight: normal;
+    width: 100%;
+    min-height: 820px;
+}
+
+.iframe-content-wrapper{
+    font-weight: normal;
+    width: 100%;
+}
+
+.content-banner-section{
+    min-height: 400px;
+    margin-top: 90px;
+    color: white;
+    font-weight: normal;
+    padding: 0 40px;
+}
+
+.content-section{
+    min-height: 400px;
+    margin-top: 90px;
+    color: black;
+    font-weight: normal;
+    padding: 0 40px;
+
+}
+
+.inner-action-button-flex{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.inner-action-button-flex > .inner-action-button_element{
+    flex-grow: 1;
+    margin-left: 1rem !important;
+}
+
+.pad-all-5{
+    padding: 5px;
+}
+
+.pad-all-10{
+    padding: 10px;
+}
+
+.pad-all-15{
+    padding: 15px;
+}
+
+
+.pad-all-20{
+    padding: 20px !important;
+}
+
+.pad-all-40{
+    padding: 40px;
+}
+
+.pad-l-r-15{
+    padding: 0 15px !important;
+}
+
+.pad-l-r-20{
+    padding: 0 20px;
+}
+
+.pad-l-r-30{
+    padding: 0 30px;
+}
+
+.pad-l-r-40{
+    padding: 0 40px;
+}
+
+.pad-t-10{
+    padding-top: 10px;
+}
+.pad-bottom-10{
+    padding-bottom: 10px;
+}
+
+.pad-t-20{
+    padding-top: 20px;
+}
+
+.pad-t-30{
+    padding-top: 30px;
+}
+
+.pad-t-40{
+    padding-top: 40px;
+}
+
+
+.m-t-10{
+    margin-top: 10px !important;
+}
+.m-b-10{
+    margin-bottom: 10px !important;
+}
+
+.m-t-20{
+    margin-top: 20px !important;
+}
+
+.m-t-30{
+    margin-top: 30px !important;
+}
+
+.m-t-40{
+    margin-top: 40px !important;
+}
+
+.profile-yet-confirm{
+    background: #F7B217;
+    color: white;
+    border-radius: 10px;
+}
+
+.profile-confirmed{
+    background: #054300;
+    color: white;
+    border-radius: 10px;
+}
+
+.profile-declined{
+    background: #E64234;
+    color: white;
+    border-radius: 10px;
+}
+
+.banner{
+    padding: 20px 40px;
+    min-height: 550px;
+}
+
+.flex-justify-item-content-centre{
+    justify-content: center;
+}
+
+.width-percentage-100{
+    width: 100%;
+}
+
+.flex-layout{
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: row;
+}
+
+.flex-layout-2{
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+}
+
+.flex-layout-2 > div{
+    flex-grow: 1;
+}
+
+.flex-layout > .layout-cells{
+    flex-grow: 1;
+}
+
+.login-form-footer-wrapper{
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: row;
+}
+
+.login-form-footer-wrapper > .flex-div-cell{
+    flex-grow: 1;
+}
+
+
+.social-wrapper{
+    display: flex;
+    gap: 0.75rem;
+    flex-direction: row;
+}
+
+.social-wrapper > .flex-social-cell{
+    flex-grow: 1;
+}
+
+
+.flex-layout > div{
+    flex-grow: 1;
+    text-align: justify-all;
+    line-height: 1.5;
+    /*background: #8E87CC;*/
+    color: #000;
+    padding: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 2px #8E87CC solid;
+}
+
+
+.flex-layout > div:hover{
+    background: #F41F9E;
+    color: white;
+    padding: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    border: 2px #F41F9E solid;
+
+}
+
+.gird-layout-responsive{
+    display: grid;
+    grid-gap: 0.75rem;
+    grid-template-columns: 1fr;
+    /*grid-template-columns: repeat(auto-fill,minmax(20rem, 1fr));*/
+}
+
+.layout-cells{
+    /*padding:30px;*/
+    padding-top: 30px;
+    line-height: 1.42857143;
+}
+
+.text-f-12{
+    font-size: 0.75rem;
+}
+
+.text-f-11{
+    font-size: 13px;
+}
+
+.text-f-13{
+    font-size: 13px !important;
+}
+
+
+.text-f-14{
+    font-size: 14px;
+}
+
+.text-f-16{
+    font-size: 1rem;
+}
+
+.text-f-18{
+    font-size: 18px;
+}
+
+.text-f-20{
+    font-size: 20px;
+}
+
+.text-f-24{
+    font-size: 1.5rem;
+}
+
+.text-f-32{
+    font-size: 2rem;
+}
+
+.text-f-36{
+    font-size: 36px;
+}
+
+
+.text-f-40{
+    font-size: 40px;
+}
+
+
+.text-f-54{
+    font-size: 54px;
+}
+
+.text-font-weight-100{
+    font-weight: 100;
+}
+
+.text-font-weight-200{
+    font-weight: 200;
+}
+
+.text-font-weight-300{
+    font-weight: 300;
+}
+
+.text-font-weight-400{
+    font-weight: 400;
+}
+
+.text-font-weight-500{
+    font-weight: 500;
+}
+
+.title{
+    color: #1f9055;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    display: inline-block;
+    /*margin-bottom: 40px;*/
+}
+
+.pink-color{
+    color: #F41F9E !important;
+}
+
+.login-sub-title{
+    color: #000;
+    font-family: "Montserrat", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    letter-spacing: 0.01em;
+    display: inline-block;
+    /*margin-bottom: 40px;*/
+}
+
+.text-font-weight-600{
+    font-weight: 600;
+}
+
+.text-font-weight-700{
+    font-weight: 700;
+}
+
+.text-font-weight-800{
+    font-weight: 800;
+}
+
+.hover-dec:hover{
+    font-weight: 800;
+    color: #F41F9E !important;
+    text-decoration: none !important;
+
+}
+
+.hover-dec > a:hover{
+    text-decoration: none;
+
+}
+
+.wrapper-grid{
+    padding: 1rem;
+    display: grid;
+    grid-gap: 1rem;
+    grip-template-columns:repeat(autofill, minmax(20rem, 1fr));
+
+}
+
+.wrapper-flex{
+    padding: 2.5rem;
+    display: flex;
+}
+
+.wrapper-flex > .cell{
+    flex-grow: 1;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #F5EEF1;
+    font-size: 15px;
+    background-color: #a7549f;
+}
+
+.cell > a{
+    color: #fefefe !important;
+    text-decoration: none;
+}
+
+.cell > a:hover{
+    color: #fefefe !important;
+    text-decoration: none;
+}
+
+
+.cell > a:active{
+    color: #fefefe !important;
+}
+
+.cell:nth-child(1){
+    /*   border-top-right-radius: 10px;*/
+    border-radius: 10px;
+
+    padding-bottom: 50px !important;
+}
+
+.cell:nth-child(2){
+    /*border-bottom-right-radius: 10px;*/
+    border-radius: 10px;
+    padding-bottom: 50px !important;
+}
+

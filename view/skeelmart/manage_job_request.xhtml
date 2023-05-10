@@ -1,0 +1,447 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/templates/adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="title_additional_caption">
+        ::- Settings
+
+
+    </ui:define>
+
+    <ui:define name="additional_css_jscript">
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/personnel-profile.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/common.css" />
+
+
+        <link href="#{request.contextPath}/vendor/font-awesome-4.7.0/css/font-awesome.css" rel="stylesheet" type="text/css"/>       
+        <link href="#{request.contextPath}/resources/css/pf-fix.css" rel="stylesheet" type="text/css"/> 
+        <link href="#{request.contextPath}/resources/css/form-styles.css" rel="stylesheet" type="text/css"/> 
+
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/fancybox/jquery.fancybox.css"/>
+        <script src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+        <script src="#{request.contextPath}/vendor/select2-4.0.3/js/select2.min.js"></script>
+
+    </ui:define>
+
+    <ui:define name="page_toolbar_left">
+        Manage Job Request
+    </ui:define>
+
+    <ui:define name="page_toolbar_right">
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h:form prependId="false">
+                    <h:panelGroup id="searchPanel" layout="block">
+                        <div style="margin-bottom: 10px; margin-top: 20px;">
+
+
+                            <h:inputText id="txt_srch_description" styleClass="form-control input-sm"
+                                         value="#{skeelMartJobServiceRequestBacking.searchDescription}" style="width: 200px;display: inline-block; margin-left: 10px;" 
+                                         title="Search by description" autocomplete="off" />
+
+
+                            <h:selectOneMenu id="sel_printing_status" class="form-control input-sm"
+                                             style="width: 150px; display: inline-block; margin-left: 10px;" 
+                                             value="#{skeelMartJobServiceRequestBacking.searchRecordStatus}"
+                                             title="Select Record Status">
+                                <f:selectItem itemLabel="Select Record Status" itemValue="" />
+                                <f:selectItems value="#{applicationBackingCode.recordStatus}" />
+                            </h:selectOneMenu>
+
+
+                            <p:commandLink actionListener="#{skeelMartJobServiceRequestBacking.searchAction}"
+                                           styleClass="btn btn-primary btn-sm" style="margin-left: 20px;"
+                                           process="searchPanel" update="gridPanel,recordPanel">
+                                <i class="fa fa-search"></i> Search
+                            </p:commandLink>
+
+                            <p:commandLink actionListener="#{skeelMartJobServiceRequestBacking.resetAction}"
+                                           styleClass="btn btn-default btn-sm" style="margin-left: 5px; display: none;"
+                                           process="searchPanel" update="recordPanel,gridPanel">
+                                <i class="fa fa-eraser"></i> Reset
+                            </p:commandLink>
+
+                        </div>
+                    </h:panelGroup>
+
+                    <!-- Pagination and description -->
+                    <div style="margin-top: 40px;margin-bottom: 5px;">
+                        <h:panelGroup layout="block" id="gridPanel">
+
+                            <div class="pull-left">                        
+                                <div class="btn-group btn-group-sm" role="group"
+                                     style="display: inline-block;font-weight: bold;">                            
+                                    <p:commandLink type="button" 
+                                                   class="btn btn-default btn-sm" value="&laquo;" 
+                                                   process="@this" update="gridPanel" 
+                                                   action="#{skeelMartJobServiceRequestBacking.pageFirst}"
+                                                   disabled="#{skeelMartJobServiceRequestBacking.showFirstPrev}"/>
+                                    <p:commandLink type="button" class="btn btn-default btn-sm" value="&lt;" 
+                                                   process="@this" update="gridPanel"
+                                                   action="#{skeelMartJobServiceRequestBacking.pagePrevious}"
+                                                   disabled="#{skeelMartJobServiceRequestBacking.showFirstPrev}"/>
+                                    <p:commandLink type="button" class="btn btn-default btn-sm" value="&gt;"
+                                                   process="@this" update="gridPanel"
+                                                   action="#{skeelMartJobServiceRequestBacking.pageNext}"
+                                                   disabled="#{skeelMartJobServiceRequestBacking.showNextLast}"/>
+                                    <p:commandLink type="button" class="btn btn-default btn-sm" value="&raquo;"
+                                                   process="@this" update="gridPanel"
+                                                   action="#{skeelMartJobServiceRequestBacking.pageLast}"
+                                                   disabled="#{skeelMartJobServiceRequestBacking.showNextLast}"/>
+                                </div>
+
+                                <div style="display: inline-block;margin-left: 20px;">
+                                    #{skeelMartJobServiceRequestBacking.paginationDescription}
+                                </div>
+
+                            </div>
+
+                            <div class="pull-right">                              
+
+                                <p:commandLink  class="btn btn-success btn-sm" style="display: none; 
+                                                background: #8E87CC !important; border-radius: 10px; text-transform: none !important; font-size: 14px !important;;" 
+                                                oncomplete="PF('newJobRequestDialog').show();">
+                                    <i class="fa fa-plus-circle"></i> New Job Request
+                                </p:commandLink>
+
+                            </div>
+
+
+                            <div class="clearfix"></div>
+
+                            <div class="table-no-white-wrapper" style="margin-top:10px;">
+                                <table class="table table-bordered table-hover personnel-list">
+                                    <thead>
+                                        <tr>
+                                            <th width="30" style="display: none;"></th>
+                                            <th width="40">S/N</th>
+                                            <th width="100">Order Date</th>  
+                                            <th>Service Type</th>  
+                                            <th>Service Request Description</th>                                                                                    
+                                            <th>Request Progress</th>
+                                            <th width="100">Assigned Date</th>  
+                                            <th>Consultant</th>  
+                                            <th>Consultant Fee</th>  
+                                            <th>Status</th>       
+                                            <th width="30"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat var="record" value="#{skeelMartJobServiceRequestBacking.recordList}" >
+                                            <tr>
+                                                <td width="30" style="display: none;">
+                                                    <a href="#"
+                                                       class="btn btn-sm btn-info" title="View Profile">
+                                                        <i class="fa fa-check"></i>
+                                                    </a>
+                                                </td>                                            
+                                                <td width="40">#{record.displaySerialNo}</td>
+                                                <td>#{record.jobRequestedDate}</td>
+                                                <td>
+                                                    #{record.serviceDescription}                                                   
+                                                </td>
+                                                <td>
+                                                    #{record.jobDescription}
+                                                    <br /><br />                                                   
+                                                    <span style="background:#0D569F; color: #fff; padding: 10px; font-weight: bold;">
+                                                        <i class="fa fa-calendar"></i>
+                                                        Client Expected Date of Delivery: #{record.clientExpectedDateOfDelivery}
+                                                    </span> 
+
+                                                    &nbsp;&nbsp;&nbsp;
+                                                    <a href="#" 
+                                                       onclick="openFancyBoxIframe('#{request.contextPath}/view/skeelmart/view_completed_job_details.xhtml?vhsuYagsh62fshkfd=#{record.jobId}', 980, 600); return false;"
+                                                       class="btn btn-sm btn-success" title="Forward Job To Client" 
+                                                       style="text-transform: none !important; padding: 10px; font-size:13px !important; font-weight:500;
+                                                       display: #{record.jobRequestTrackerDTO.jobCompletedByConsultant eq 'Y'
+                                                                  and record.jobRequestTrackerDTO.clientAcceptJobDone eq 'N' ? 'inline':'none'};">
+                                                        <i class="fa fa-send"></i> Send Completed Job to Client
+                                                    </a>
+
+
+                                                    <a href="#" 
+                                                       onclick="openFancyBoxIframe('#{request.contextPath}/view/skeelmart/view_completed_job_details.xhtml?vhsuYagsh62fshkfd=#{record.jobId}', 980, 600); return false;"
+                                                       class="btn btn-sm btn-default" title="Forward Job To Client" 
+                                                       style="text-transform: none !important; padding: 10px; font-size:13px !important; font-weight:500;
+                                                       display: #{record.jobRequestTrackerDTO.jobCompletedByConsultant eq 'Y' 
+                                                                  and record.jobRequestTrackerDTO.clientAcceptJobDone eq 'Y' ? 'inline':'none'};">
+                                                        <i class="fa fa-send"></i> Job Accepted By Client
+                                                    </a>
+
+
+
+                                                    <br /><br />
+                                                </td>
+
+
+                                                <td>
+                                                    <h:outputLabel rendered="#{record.hasJobCommenced eq 'N'}" style="background: #E51C23; color: #fff; padding: 5px; border-radius: 3px; width: 110px;">
+                                                        Yet To Commence
+                                                    </h:outputLabel>
+
+                                                    <h:outputLabel rendered="#{record.hasJobCommenced eq 'Y' and record.jobRecordStatus eq 'PENDING'}" style="background:#785a14; color: #fff; padding: 5px; border-radius: 3px;width: 110px;">
+                                                        On-Going
+                                                    </h:outputLabel>
+
+                                                    <h:outputLabel rendered="#{record.hasJobCommenced eq 'Y' and record.jobRecordStatus eq 'COMPLETED'}" style="background: #3FC67F; color: #fff; padding: 5px; border-radius: 3px;width: 110px;">
+                                                        Job Completed
+                                                    </h:outputLabel>
+
+                                                </td>
+
+                                                <td>#{record.jobAssignedDate}</td>
+                                                <td>#{record.jobAssignedToFullName}</td>
+                                                <td>
+                                                    #{record.jobConsultancyFee}
+
+
+                                                    <br />
+                                                    <a href="#" 
+                                                       onclick="openFancyBoxIframe('#{request.contextPath}/view/skeelmart/view_job_request_details.xhtml?vhsuYagsh62fshkfd=#{record.jobId}', 980, 600); return false;"
+                                                       class="btn btn-sm btn-success" title="Send Invoice to Client" 
+                                                       style="text-transform: none !important; display: #{record.jobAssignedToFullName ne ''  and record.jobRequestTrackerDTO.jobInvoiceForwardedToClient eq 'N' ? 'block':'none'};">
+                                                        <i class="fa fa-send"></i> Send Invoice to Client
+                                                    </a>
+
+
+                                                    <a href="#" 
+                                                       onclick="openFancyBoxIframe('#{request.contextPath}/view/skeelmart/view_job_request_details.xhtml?vhsuYagsh62fshkfd=#{record.jobId}', 980, 600); return false;"
+                                                       class="btn btn-sm btn-warning" title="Send Invoice to Client" 
+                                                       style="text-transform: none !important; display: #{record.jobAssignedToFullName ne '' and record.jobRequestTrackerDTO.jobInvoiceForwardedToClient eq 'Y' ? 'block':'none'};">
+                                                        <i class="fa fa-eyedropper"></i> Invoice Already Sent
+                                                    </a>
+
+                                                </td>
+
+                                                <td>#{record.jobRecordStatus}</td>
+                                                <td width="30">
+                                                    <a href="#" style="display: none;"
+                                                       onclick="openFancyBoxIframe('#{request.contextPath}/view/skeelmart/view_job_request_details.xhtml?vhsuYagsh62fshkfd=#{record.jobId}', 1150, 800); return false;"
+                                                       class="btn btn-sm btn-danger" title="View Job Request">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+                                                    <a href="#{request.contextPath}/view/skeelmart/view_job_request_details_2.xhtml?vhsuYagsh62fshkfd=#{record.jobId}"                                                     
+                                                       class="btn btn-sm btn-danger" title="View Job Request">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </h:panelGroup>
+                    </div>
+
+                    <h:panelGroup layout="block" id="recordPanel">
+
+                    </h:panelGroup>
+
+
+                    <!-- discipline dialog -->
+                    <p:dialog id="new_service_request_dialog" header="New Job Request" widgetVar="newJobRequestDialog" resizable="false"  
+                              width="800" modal="true" position='center middle'>  
+                        <h:panelGroup id="newJobRequestDialogPanel">  
+                            <p:messages globalOnly="true"/>
+                            <table class="app-formtable">
+                                <tr>
+                                    <td class="app-label">Service:<span class="required-indicator">*</span></td>
+                                    <td colspan="4">
+                                        <h:selectOneMenu value="#{skeelMartJobServiceRequestBacking.recordDto.serviceIdRequested}"
+                                                         style="width: 500px; border: 1px solid #fefefe; min-height: 40px !important; font-size: 14px !important;">                                       
+                                            <f:selectItem itemLabel="-Choose Needed Service -" itemValue="" />
+                                            <f:selectItems value="#{applicationBackingCode.serviceAreas}" />
+                                        </h:selectOneMenu>
+                                    </td>
+                                </tr>  
+
+                                <tr>
+                                    <td class="app-label"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="app-label" valign="top">Job Description:<span class="required-indicator">*</span></td>
+                                    <td colspan="4">
+                                        <p:editor value="#{skeelMartJobServiceRequestBacking.recordDto.jobDescription}"
+                                                  controls="bold italic underline bullets" width="500" height="170"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="app-label"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td class="app-label">Expected Date of Delivery:<span class="required-indicator">*</span></td>
+                                    <td colspan="4">
+                                        <h:inputText value="#{skeelMartJobServiceRequestBacking.recordDto.clientExpectedDateOfDelivery}"
+                                                     id="delivery_date"
+                                                     styleClass="form-control" style="width: 215px;" autocomplete="off"/>
+                                        <p:watermark for="delivery_date"  value="dd/mm/yyyy"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="app-label"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <p:commandLink styleClass="btn btn-primary" 
+                                                       style="color: #fff;margin-bottom: 70px; text-transform: none; background: #8E87CC !important; font-size: 13px !important; font-weight: 400;"
+                                                       actionListener="#{skeelMartJobServiceRequestBacking.preSubmitNewJobRequestAction}"
+                                                       process="newJobRequestDialogPanel">
+                                            <i class="fa fa-send"></i> Submit Job Request Order
+                                        </p:commandLink>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+
+                        </h:panelGroup>  
+                    </p:dialog> 
+                    <!-- end discipline DIALOG -->
+
+
+                    <p:dialog id="submit_dialog" header="Confirmation: Service Request?" widgetVar="submitRequestDialog" resizable="false"  
+                              width="550" modal="true" position='center' closable="false">
+                        <h:panelGroup layout="block" id="submitDisciplineDialogPanel">
+
+                            <div class="confirm-txt">
+                                Are you sure want to place a request for the selected service?                              
+                            </div>
+                            <br/>
+                            <p:commandLink  actionListener="#{skeelMartJobServiceRequestBacking.createAction}" ajax="false"
+                                            value="Yes" styleClass="btn btn-success bs"
+                                            style="color: #fff;font-weight: bold;font-size: 13px;"/>
+
+                            <p:commandLink  action="#{skeelMartJobServiceRequestBacking.closeJobRequestConfirmDialog}" 
+                                            oncomplete="PF('submitRequestDialog').hide();"
+                                            value="No" styleClass="btn btn-danger bs"
+                                            style="color: #fff;font-weight: bold;font-size: 13px;margin-left: 30px;"/>
+
+                        </h:panelGroup>
+                    </p:dialog>
+
+                </h:form>
+            </div>
+
+
+        </div>
+
+
+        <script type="text/javascript" src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+        <script src="#{request.contextPath}/vendor/jquery.nicescroll-v3.6.8/jquery.nicescroll.min.js"></script>
+
+        <script type="text/javascript">
+                                                           $(document).ready(function () {
+                                                               $("#profile-leftnav").niceScroll({cursorcolor: "#009E54"});
+                                                           });
+                                                           function openFancyBoxImage(url, title) {
+                                                               $.fancybox.open({
+                                                                   autoSize: false,
+                                                                   width: '80%',
+                                                                   height: '90%',
+                                                                   href: '' + url + '',
+                                                                   title: title,
+                                                                   padding: 2,
+                                                                   transitionIn: 'elastic',
+                                                                   transitionOut: 'elastic',
+                                                                   helpers: {
+                                                                       overlay: {
+                                                                           closeClick: false
+                                                                       }
+                                                                   }
+                                                               });
+                                                               return false;
+                                                           }
+
+                                                           function openFancyBoxPdf(url, title) {
+                                                               $.fancybox.open({
+                                                                   autoSize: false,
+                                                                   width: 900,
+                                                                   height: 650,
+                                                                   href: '' + url + '',
+                                                                   title: title,
+                                                                   type: 'iframe',
+                                                                   padding: 2,
+                                                                   transitionIn: 'elastic',
+                                                                   transitionOut: 'elastic',
+                                                                   helpers: {
+                                                                       overlay: {
+                                                                           closeClick: false
+                                                                       }
+                                                                   }
+                                                               });
+                                                               return false;
+                                                           }
+
+                                                           function openFancyBoxIframe(url, cWidth, cHeight) {
+                                                               $.fancybox.open({
+                                                                   autoSize: false,
+                                                                   width: cWidth,
+                                                                   height: cHeight,
+                                                                   href: '' + url + '',
+                                                                   type: 'iframe',
+                                                                   padding: 2,
+                                                                   transitionIn: 'elastic',
+                                                                   transitionOut: 'elastic',
+                                                                   helpers: {
+                                                                       overlay: {
+                                                                           closeClick: false
+                                                                       }
+                                                                   },
+                                                                   afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+                                                                       parent.location.reload(true);
+                                                                   }
+                                                               });
+                                                               return false;
+                                                           }
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('form').find("#txt_srch_file_no").each(function (ev)
+                {
+                    if (!$(this).val()) {
+                        $(this).attr("placeholder", "Search by File No.");
+                    }
+                });
+                $('form').find("#txt_srch_surname").each(function (ev)
+                {
+                    if (!$(this).val()) {
+                        $(this).attr("placeholder", "Search by Surname");
+                    }
+                });
+                $('form').find("#txt_srch_other_names").each(function (ev)
+                {
+                    if (!$(this).val()) {
+                        $(this).attr("placeholder", "Search by Other Names");
+                    }
+                });
+            });
+        </script>
+
+    </ui:define>
+</ui:composition>

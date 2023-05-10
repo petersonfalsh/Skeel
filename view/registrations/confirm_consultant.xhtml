@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/templates/light_box_iframe_template.xhtml">
+
+            <ui:define name="title_additional_caption">
+
+
+            </ui:define>
+
+            <ui:define name="additional_css_jscript">
+                <link rel="stylesheet" href="#{request.contextPath}/resources/css/personnel-profile.css"/>
+                <style type="text/css">
+
+                    /*                   body{
+                                            margin-top: 0 !important;
+                                            padding-top: 0 !important;
+                                        }*/
+
+                    .ui-growl { 
+                        left:20px;                    
+                        width: inherit;
+                    }
+
+                    .ui-growl-title ul.msg{
+                        padding: 0px;
+                        margin: 0px;
+                    }
+
+
+                    .ui-growl-item {
+                        display: block;
+                        padding: 10px 15px !important;
+                    }
+
+                    .ui-growl-message {
+                        padding: 0 0 5px 10px;
+                        width: inherit !important; 
+                        float: left; 
+                    }
+                </style>
+
+
+
+                <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/fancybox/jquery.fancybox.css"/>
+
+
+            </ui:define>
+
+
+            <ui:define name="header-caption">
+                <div style="min-height: 60px; background:#DE49A2; color: #fff; font-size: 16px !important; font-weight: 500; padding: 10px 10px !important;
+                     border-top-left-radius: 10px; border-top-right-radius: 10px;">
+
+                    <div class="pull-left">
+                        <i class="fa fa-user"></i> Consultant Profile Confirmation 
+                    </div>
+
+                    <div class="pull-right" style="color: #000 !important;">
+
+                    </div>
+
+                </div>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="main_form" prependId="false">
+                    <h:panelGroup id="confirmConsultantPanel">
+                        <p:messages id="msgFeedback" closable="true"/>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+
+                                    <h5 style="font-weight: normal; font-size: 14px !important;">
+                                        <i class="fa fa-user"></i> Consultant Full Name  
+                                    </h5>
+
+                                    <p style="text-align: justify; font-size: 20px;font-weight: 500;">
+                                        #{confirmConsultantsRegistrationBacking.recordDto.lastName}
+                                        &nbsp;#{confirmConsultantsRegistrationBacking.recordDto.firstName}
+                                        &nbsp;#{confirmConsultantsRegistrationBacking.recordDto.middleName}
+
+                                    </p>
+
+                                    <div class="pull-left">
+                                        <h5 style="font-weight: bold; font-size: 14px !important;">
+                                            <i class="fa fa-envelope"></i> Email Address  
+                                        </h5>
+                                        <p>
+                                            #{confirmConsultantsRegistrationBacking.recordDto.emailAddress}
+                                        </p>
+
+                                    </div>
+
+                                    <div class="pull-right">
+                                        <h5 style="font-weight: bold; font-size: 14px !important;">
+                                            <i class="fa fa-phone"></i> Phone Number  
+                                        </h5>
+                                        <p>
+                                            #{confirmConsultantsRegistrationBacking.recordDto.phoneNumber}
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div>
+
+                                    <div class="pull-left">
+                                        <h5 style="font-weight: bold; font-size: 14px !important;">
+                                            <i class="fa fa-home"></i> Specialization 
+                                        </h5>
+                                        <div class="table-no-white-wrapper" style="margin-top:10px;">
+                                            <table class="table table-bordered table-hover personnel-list">
+                                                <thead>
+                                                    <tr>
+                                                        <th>S/No</th> 
+                                                        <th>Description</th>                                                      
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ui:repeat var="record" value="#{confirmConsultantsRegistrationBacking.recordDto.userSpecialization}" >
+                                                        <tr>
+                                                            <td>
+                                                                #{record.displaySerialNo}
+                                                            </td>
+
+                                                            <td>
+                                                                #{record.areaOfSpecializationDescription}                                                                
+                                                            </td>                                                           
+
+                                                        </tr>
+                                                    </ui:repeat>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="pull-right">
+                                        <h5 style="font-weight: bold; font-size: 14px !important;">
+                                            <i class="fa fa-home"></i> Service Rendered  
+                                        </h5>
+                                        <div class="table-no-white-wrapper" style="margin-top:10px;">
+                                            <table class="table table-bordered table-hover personnel-list">
+                                                <thead>
+                                                    <tr>
+                                                        <th>S/No</th> 
+                                                        <th>Description</th>                                                      
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <ui:repeat var="serviceRecord" value="#{confirmConsultantsRegistrationBacking.recordDto.userServices}" >
+                                                        <tr>
+                                                            <td>
+                                                                #{serviceRecord.displaySerialNo}
+                                                            </td>
+
+                                                            <td>
+                                                                #{serviceRecord.serviceDescription}                                                                
+                                                            </td>                                                           
+
+                                                        </tr>
+                                                    </ui:repeat>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <p:commandLink styleClass="btn btn-sm btn-success" 
+                                               style="text-transform: none !important; font-size: 14px !important;
+                                               display: #{confirmConsultantsRegistrationBacking.recordDto.consultantProfileStatus eq 'CONFIRMED' ? 'none':'block'};"
+                                               actionListener="#{confirmConsultantsRegistrationBacking.confirmAction}"
+                                               process="confirmConsultantPanel" update="msgFeedback,confirmConsultantPanel">
+                                    Confirm Consultant <i class="fa fa-check fa-2x"></i>
+                                </p:commandLink>
+
+                                <div class="btn btn-sm btn-success"
+                                     style="text-transform: none !important; font-size: 18px !important; font-weight: 500;
+                                     display: #{confirmConsultantsRegistrationBacking.recordDto.consultantProfileStatus eq 'CONFIRMED' ? 'block':'none'};">
+                                    Consultant Already Confirmed <i class="fa fa-thumbs-o-up fa-2x"></i>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </h:panelGroup>
+
+
+
+
+
+
+                </h:form>
+            </ui:define>
+
+            <ui:define name="addtional_jquery">
+                <script type="text/javascript" src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+                <script src="#{request.contextPath}/vendor/jquery.nicescroll-v3.6.8/jquery.nicescroll.min.js"></script>
+
+                <script type="text/javascript">
+                    $(document).ready(function () {
+                        $("#profile-leftnav").niceScroll({cursorcolor: "#009E54"});
+                    });
+                    function openFancyBoxImage(url, title) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: '80%',
+                            height: '90%',
+                            href: '' + url + '',
+                            title: title,
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            }
+                        });
+                        return false;
+                    }
+
+                    function openFancyBoxPdf(url, title) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: 900,
+                            height: 650,
+                            href: '' + url + '',
+                            title: title,
+                            type: 'iframe',
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            }
+                        });
+                        return false;
+                    }
+
+                    function openFancyBoxIframe(url, cWidth, cHeight) {
+                        $.fancybox.open({
+                            autoSize: false,
+                            width: cWidth,
+                            height: cHeight,
+                            href: '' + url + '',
+                            type: 'iframe',
+                            padding: 2,
+                            transitionIn: 'elastic',
+                            transitionOut: 'elastic',
+                            helpers: {
+                                overlay: {
+                                    closeClick: false
+                                }
+                            },
+                            afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+                                parent.location.reload(true);
+                            }
+                        });
+                        return false;
+                    }
+                </script>
+
+            </ui:define>
+
+
+
+        </ui:composition>
+
+    </body>
+</html>

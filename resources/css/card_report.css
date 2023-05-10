@@ -1,0 +1,130 @@
+body{
+    color: #000000;
+    /*font-family: "Roboto", Segoe, "Segoe UI", "DejaVu Sans", "Trebuchet MS", Verdana, sans-serif;*/
+    /*    font-family: "Arial";*/
+    margin:0px;
+    color: #000;
+}
+
+div{
+    display:block;
+}
+
+
+
+.front_main_div_wrapper{
+    /*background-image: url(../images/id_front_page.JPG);*/	   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-repeat: no-repeat;
+    height:211px;
+    width:335px;
+    font-size:12px;
+    display: block;
+}
+
+.td-caption-format{
+     font-family: 'segoe ui' !important;
+    font-size:10px;
+    font-weight: bold;
+    vertical-align:middle;
+    color: #000;
+    /*	background-color:#4f4ef4;*/
+    padding:0px 0px 2px 0px;
+}
+
+.td-display-biodata{
+     font-family: 'segoe ui' !important;
+    font-size:12px !important;
+    vertical-align:middle;
+    font-weight: bold;
+    padding:0px 0px 2px 0px;
+    color: #000;
+}
+
+.td-display-staff-name{
+    font-family: 'segoe ui' !important;
+    font-size:16px !important;
+    vertical-align:middle;
+    font-weight: bold;
+    padding:0px 0px 7px 0px;
+    color: #000;
+    line-height: 17px;  
+}
+
+.back_main_div_wrapper{
+    background: url(../images/id_back_page.jpg) no-repeat;	   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;   
+    background-repeat: no-repeat;
+    height:211px;
+    width:335px;
+    display: block;
+
+}
+
+#staff_biodata{
+    display: inline-table
+
+}
+
+page {
+    background: black;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+@media print {
+    body{
+        -webkit-print-color-adjust: exact !important;  
+    }
+    *{
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+
+    .report-page-wrapper{
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    page{
+        margin: 0;
+        box-shadow: 0;
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    #pageBreaker {
+        page-break-after: always !important;
+    }
+
+
+    .front_main_div_wrapper{
+        /*background: url(../images/id_front_page.JPG) no-repeat;*/	   
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-repeat: no-repeat;
+        height:211px;
+        width:335px;
+        font-size:12px;
+        display: block;
+        -webkit-print-color-adjust: exact !important; 
+    }
+
+    .back_main_div_wrapper{
+        background: url(../images/id_back_page.jpg) no-repeat;	   
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;   
+        background-repeat: no-repeat;
+        height:211px;
+        width:335px;
+        display: block;
+        -webkit-print-color-adjust: exact !important; 
+    }
+} 
+

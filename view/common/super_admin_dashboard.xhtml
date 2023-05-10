@@ -1,0 +1,458 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/templates/adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+
+    <ui:define name="title_additional_caption">
+        ::- Dashboard
+    </ui:define>
+
+
+    <ui:insert name="additional_css_jscript">
+
+
+
+        <style>
+            body {
+                margin: 0;
+                /*                font-family: var(--bs-body-font-family);
+                                font-size: var(--bs-body-font-size);
+                                font-weight: var(--bs-body-font-weight);
+                                line-height: var(--bs-body-line-height);
+                                color: var(--bs-body-color);
+                                text-align: var(--bs-body-text-align);
+                                background-color: var(--bs-body-bg);*/
+                -webkit-text-size-adjust: 100%;
+                -webkit-tap-highlight-color: rgba(34,41,47,0);
+            }
+
+            .match-height > [class*=col] {
+                /*               display: -webkit-box;
+                                display: -webkit-flex;
+                                display: -ms-flexbox;*/
+                display: flex;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -webkit-flex-flow: column;
+                -ms-flex-flow: column;
+                flex-flow: column;
+                background: #D26FAC !important;
+                height: 240px !important;
+
+            }
+
+            .match-height-2 > div {
+                display: flex;
+                flex-flow: column;
+                background: #D26FAC !important;
+                height: 240px !important;
+            }
+
+            .flex-container {
+                display: flex;
+                background-color: #019342 !important;
+                justify-content: space-between;
+            }
+
+            .flex-container > div {
+                background-color: #red;
+                margin: 10px;
+                padding: 20px;
+                font-size: 30px;
+                min-height: 50px;
+            }
+
+            .wrapper {
+                width: 500px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .wrapper > div {
+                flex: 1 1 150px;
+                height: 50px;
+                background: #fff;
+                border-radius: 5px;
+                -webkit-box-shadow: -7px -2px 0px 0px rgba(240,232,240,0.58);
+                -moz-box-shadow: -7px -2px 0px 0px rgba(240,232,240,0.58);
+                box-shadow: -7px -2px 0px 0px rgba(240,232,240,0.58);
+            }
+
+            .container-div{
+                padding: 2rem;
+                display: grid;
+                grid-gap: 0.5em;
+                /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+                grid-template-columns:repeat(auto-fill, minmax(20rem, 1fr));
+            }
+            .cell{
+                background-color: aquamarine;
+                min-height: 2rem;
+                border-radius: 30px;
+                padding: 2rem;
+            }
+
+            .tag-wrapper{
+                background: #019342 !important;
+                padding: 20px !important;
+                border: 4px solid #3C3C44;               
+            }
+
+
+            *,
+            ::after,
+            ::before {
+                box-sizing: border-box;
+            }
+
+            .timeline {
+                padding: 0;
+                margin-bottom: 0;
+                margin-left: 1rem;
+                list-style: none;
+            }
+
+            .ms-50 {
+                margin-left: 0.5rem !important;
+            }
+
+            .card-user-timeline .timeline .timeline-item:not(:last-child) {
+                padding-bottom: 2.3rem;
+            }
+
+            .timeline .timeline-item:not(:last-child) {
+                padding-bottom: 1.8rem;
+            }
+
+            .timeline .timeline-item {
+                position: relative;
+                padding-left: 2.5rem;
+                border-left: 1px solid #EBE9F1;
+            }
+
+            .timeline .timeline-item .timeline-point.timeline-point-indicator {
+                left: -.412rem;
+                top: .07rem;
+                height: 12px;
+                width: 12px;
+                border: 0;
+                background-color: #7367F0;
+            }
+
+            .timeline .timeline-item .timeline-point {
+                position: absolute;
+                left: -.85rem;
+                top: 0;
+                z-index: 2;
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -ms-flexbox;
+                display: flex;
+                -webkit-box-pack: center;
+                -webkit-justify-content: center;
+                -ms-flex-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -webkit-align-items: center;
+                -ms-flex-align: center;
+                align-items: center;
+                height: 1.75rem;
+                width: 1.75rem;
+                text-align: center;
+                border-radius: 50%;
+                border: 1px solid #7367F0;
+                background-color: #FFF;
+            }
+
+            .timeline .timeline-item .timeline-event {
+                position: relative;
+                width: 100%;
+                min-height: 4rem;
+            }
+
+            .h6,
+            h6 {
+                font-size: 1rem;
+            }
+
+            .h1,
+            .h2,
+            .h3,
+            .h4,
+            .h5,
+            .h6,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-top: 0;
+                margin-bottom: .5rem;
+                font-family: inherit;
+                font-weight: 500;
+                line-height: 1.2;
+                color: #5E5873;
+            }
+
+            .table,
+            address,
+            dl,
+            ol,
+            p,
+            pre,
+            ul {
+                margin-bottom: 1rem;
+            }
+
+            li {
+                display: list-item;
+                text-align: -webkit-match-parent;
+            }
+        </style>
+    </ui:insert>
+
+
+    <ui:define name="page_toolbar_left">
+        <!--        Administrator Dashboard-->
+    </ui:define>
+
+    <ui:define name="page_toolbar_right">
+
+    </ui:define>
+
+    <ui:define name="content">      
+        <div class="row" style="padding-left: 10px; padding-right: 10px;">
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+
+
+
+                <div class="col-lg-10 col-sm-10 col-md-10 pull-left">
+
+
+                    <div>
+                        <span class="card- card-2-" style="padding: 10px;margin-top: 80px;text-align: center; font-size: 26px;">
+                            Hi System Administrator <b>#{adminTemplateSessionBacking.currentUser.displayName}</b> welcome back!    
+                            <i class="fa fa-facebook pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                            <i class="fa fa-google pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                            <i class="fa fa-instagram pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                            <i class="fa fa-telegram pad-all-5" aria-hidden="true" style="font-size: 20px !important; color: #229ED9;"></i>
+                        </span>
+                    </div>
+
+                    <br />
+
+                    <!-- first tag row -->
+
+                    <div class="row" style="background-color: transparent; opacity: 0.9; border-radius: 15px;padding: 10px;">
+                        <div class="col-12 col-sm-12" style="padding-bottom: 15px;">
+                            <span class="pull-left">
+                                <span style="padding: 10px; font-size: 18px !important; font-weight: 400; color: #000;">
+                                    <i class="fa fa-bar-chart-o" aria-hidden="true" style="color: #F41F9E;"></i> Service Request Statistics
+                                </span>
+
+
+                            </span>
+
+                            <span class="pull-right">
+                                <span style="padding: 10px; font-size: 16px !important; font-weight: 400; color: #000;">
+                                    <i class="fa fa-asterisk" aria-hidden="true" style="color: #F41F9E;"></i> Total Service(s) Requested -::- 
+                                </span>
+
+                                <span style="padding: 10px; font-size: 18px !important; font-weight: 800; color: #000; text-align: left;">
+                                    #{adminDashboardBacking.recordDto.totalNumberOfJobRequested}
+                                </span> 
+                            </span>
+                        </div>
+
+
+
+                        <!-- Tag 1 -->
+                        <div class="col-sm-2" style="padding: 15px;text-align: center; color: #019342; background-color: #fff; border-radius: 10px;
+                             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12); display: none; ">  
+
+                            <i class="fa fa-newspaper-o fa-3x" aria-hidden="true" style="color: #7180E1;"></i><br/>
+
+                            <p style="font-size: 24px !important; font-weight: 700;">##{adminTemplateSessionBacking.currentUser.walletBalance}</p>   
+
+                            <p style="font-size: 14px; font-weight: lighter; color: #000; margin-top: -30px !important;">Total Project(s)</p>
+                        </div>
+
+
+                        <!-- Tag 2 -->
+                        <div class="col-sm-2" style="padding: 15px;text-align: center; color: #019342; background-color: #fff; border-radius: 10px; max-height: 110px !important;
+                             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12); display: inline; margin-left: 15px; width: 24% !important;">   
+                            <div>
+                                <span class="pull-left">
+                                    <i class="fa fa-newspaper-o fa-3x" aria-hidden="true" style="color: #0F8AD8;"></i><br/>
+                                </span>
+                                <span class="pull-right" style="font-size: 24px !important; font-weight: 700; color: #000;">
+                                    #{adminDashboardBacking.recordDto.totalNumberOfJobsCompleted}
+                                </span>
+                            </div>
+                            <br /><br />
+                            <p style="font-size: 15px; font-weight: 300; color: #000; text-align: right !important;">
+                                Total Job Completed <i class="fa fa-check-circle-o" style="color:#229ED9; font-size: 18px !important; font-weight: lighter;"></i>
+                            </p>
+                        </div>
+
+
+                        <!-- Tag 3 -->
+                        <div class="col-sm-2" style="padding: 15px;text-align: justify; color: #019342; background-color: #fff; border-radius: 10px; max-height: 110px !important;
+                             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12); display: inline; margin-left: 15px;  width: 24% !important;">                           
+                            <div>
+                                <span class="pull-left">
+                                    <i class="fa fa-newspaper-o fa-3x" aria-hidden="true" style="color: #f49f1f;"></i><br/>
+                                </span>
+                                <span class="pull-right" style="font-size: 24px !important; font-weight: 500; color: #000;">
+                                    #{adminDashboardBacking.recordDto.totalNumberOfOngoingJob}
+                                </span>
+                            </div>
+                            <br /><br />
+                            <p style="font-size: 15px; font-weight: 300; color: #000; text-align: right !important;">
+                                Total Ongoing Job(s) <i class="fa fa-check-circle-o" style="color:#f49f1f; font-size: 18px !important; font-weight: lighter;"></i>
+                            </p>
+                        </div>
+
+                        <!-- Tag 4 -->
+                        <div class="col-sm-2" style="padding: 15px;text-align: justify; color: #019342; background-color: #fff; border-radius: 10px; max-height: 110px !important;
+                             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12); display: inline; margin-left: 15px;  width: 24% !important;">                           
+
+
+                            <div>
+                                <span class="pull-left">
+                                    <i class="fa fa-newspaper-o fa-3x" aria-hidden="true" style="color: #DA0001;"></i><br/>
+                                </span>
+                                <span class="pull-right" style="font-size: 24px !important; font-weight: 500;">
+                                     #{adminDashboardBacking.recordDto.totalNumberOfJobsPending}
+                                </span>
+                            </div>
+                            <br /><br />
+
+
+                            <p style="font-size: 15px; font-weight: 300; color: #000; text-align: right !important;">
+                                Total Job Yet Assigned <i class="fa fa-close" style="color:#DA0001; font-size: 18px !important; font-weight: lighter;"></i>
+                            </p>
+                        </div>
+
+                        <!-- Tag 5 -->
+                        <div class="col-sm-2" style="padding: 15px;text-align: justify; color: #019342; background-color: #fff; border-radius: 10px; max-height: 110px !important;
+                             box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12); display: inline; margin-left: 15px;  width: 24% !important;">                           
+
+                            <div>
+                                <div class="pull-left" style="display: inline;">
+                                    <i class="fa fa-money fa-3x" aria-hidden="true" style="color: #444791;"></i><br/>
+                                </div>
+                                <div class="pull-right" style="font-size: 24px !important; font-weight: 500; display: inline;">
+                                    ##{adminTemplateSessionBacking.currentUser.walletBalance}
+                                </div>
+                            </div>
+                            <br /><br />
+                            <p style="font-size: 15px; font-weight: 300; color: #000; text-align: right !important;">
+                                Total Cash <i class="fa fa-thumbs-o-up" style="color:#229ED9; font-size: 18px !important; font-weight: lighter;"></i>
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="clearfix"></div>
+                    <br />
+                    <!-- Second Row tags -->
+                    <div class="row" style="background-color: transparent; padding: 5px 25px;">
+                        <div style="min-height: 130px; background-color: #fff; width: 50% !important; display: inline-block; margin-right: 4px;
+                             border-top-left-radius: 10px; border-top-right-radius:10px;">
+                            
+                        </div>
+
+                        <div class="col-5" style="min-height: 130px; background-color: #fff; width: 49.2% !important; display: inline-block; margin-left: 4px;
+                             border-top-left-radius: 10px; border-top-right-radius:10px;">
+                            
+                        </div>
+                    </div>
+
+                </div>     
+
+
+                <!-- Right Pull DIV -->
+                <div class="col-2 col-sm-2 col-md-2 pull-right">
+                    <div class="tag-wrapper" style="text-align: justify; background-color: #fff; border-radius: 10px; color: #fefefe;">
+
+                        <div style="font-size: 15px !important; height: 50px !important; background: #229ED9; border-top-left-radius: 10px; border-top-right-radius:10px;">
+                            <div style="font-size: 15px !important;padding: 15px;">
+                                <span class="pull-left" style="font-weight: 400">
+                                    Notification
+                                </span>
+
+                                <span class="pull-right">
+                                    <i class="fa fa-bell-o" style="font-size: 23px !important;"></i> 
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="card-user-timeline" style="color: #000;">
+                            <ul class="timeline ms-50">
+                                <li class="timeline-item">
+                                    <span class="timeline-point timeline-point-indicator">
+
+                                    </span>
+
+                                    <div class="timeline-event">
+                                        <h6 style="font-weight: 700;"> Invoices have been paid</h6>
+                                        <p>Invoices are paid to the company</p>
+                                        <div class="d-flex align-items-center"  style="display: none;">
+                                            <img class="me-1" src="../../../app-assets/images/icons/json.png" alt="data.json" height="23"  />
+                                            <h6 class="more-info mb-0">data.json</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <span class="timeline-point" style="background-color: green;">
+                                        <i class="ri-check-line" style="color: white; font-size: 25px !important;"></i>
+                                    </span>
+
+                                    <div class="timeline-event">
+                                        <h6 style="font-weight: 700;"> Invoices have been paid</h6>
+                                        <p>Invoices are paid to the company</p>
+                                        <div class="d-flex align-items-center"  style="display: none;">
+                                            <img class="me-1" src="../../../app-assets/images/icons/json.png" alt="data.json" height="23" />
+                                            <h6 class="more-info mb-0">data.json</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-item">
+                                    <span class="timeline-point" style="background-color: red;">
+                                        <i class="ri-close-line" style="color: white; font-size: 25px !important;"></i>
+                                    </span>
+                                    <div class="timeline-event">
+                                        <h6 style="font-weight: 700;"> Invoices have been paid</h6>
+                                        <p>Invoices are paid to the company</p>
+                                        <div class="d-flex align-items-center" style="display: none;">
+                                            <img class="me-1" src="../../../app-assets/images/icons/json.png" alt="data.json" height="23" />
+                                            <h6 class="more-info mb-0">data.json</h6>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="timeline-item"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>   
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="row clearfix">
+            <div class="col-sm-12">
+
+
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

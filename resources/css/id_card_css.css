@@ -1,0 +1,383 @@
+.report-page-wrapper{
+    font-family:Tahoma, Geneva, sans-serif;
+    display:block;
+    text-align:center; 
+    width:850px;
+    padding-left:5px;
+    padding-right:5px;
+    border: thin solid #8F8E8E;
+      -webkit-print-color-adjust: exact !important; 
+}
+
+.report-page-wrapper table{
+    font-size:11px;
+}
+
+.report-panel-wrapper{
+    display:block !important;
+    text-align:center !important;
+    font-size:10px !important;
+    border: 1px solid #000 !important;
+    padding-left:5px !important;
+    padding-right:5px !important;
+
+}
+
+
+.report-container {
+    border-collapse:collapse;
+    width:850px;
+}
+
+.report-container-width-835{
+    border-collapse:collapse;
+    width:835px;
+}
+
+.report-container-width-835.content-bold {
+    font-weight:bold;
+}
+.report-container.content-bold {
+    font-weight:bold;
+}
+
+.report-score-container {
+    border-collapse:collapse;
+    width:812px;  
+    border: 1px solid black;
+}
+
+.score-th-td{
+    border: 1px solid black;
+    vertical-align: bottom;
+    padding: 5px 5px;
+}
+.score-th-td-15{
+    max-width: 15px;
+    padding: 5px 5px;
+}
+
+.score-th-td-20{
+    max-width: 20px;
+    padding: 5px 5px;
+}
+
+.score-td-caption{
+    border: 1px solid black;
+    text-align:left;
+    padding-left: 10px;
+    vertical-align: bottom;
+    padding-bottom: 5px;
+}
+
+.school-caption-div{
+    font-family:Tahoma, Geneva, sans-serif;
+    display:block;
+    text-align:center;
+    font-size:12px;
+}
+.school-name{	
+    font-size:30px;
+    font-weight:bold;
+}
+
+.staff_biodata{
+    max-width: 200px;
+}
+
+.staff_biodata_address{
+    max-width: 250px;
+}
+
+
+.academic-session-wrapper{
+    display:block;
+    background-color:#EBEBEB;
+    border-radius: 7px;
+    width: 250px;
+    font-weight:bold; 
+    text-align:center;
+    margin-left: 130px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+
+.academic-session-wrapper table{
+    font-size:11px;
+    font-weight: bold;
+}
+
+#studentBiodataTable{
+    font-size: 12px;	
+    width:100%;
+}
+
+#studentBiodata-wrapper table td{
+    font-size: 11px;
+}
+
+studentBiodata-wrapper table{
+    width: 830px;
+}
+
+.studentPassport{
+    display: inline-block;
+    width: 160px;
+    height: 160px;
+    /*border: 1px solid #ccc;*/
+    border-radius: 5px;	
+    background-size:160px 160px;
+}
+
+.app-student-biodata-label{
+    width:100px;
+    text-align:left;
+    font-weight:bold;
+    padding:3px;
+    border: 1px solid black;
+}
+.app-staff-biodata-caption{     
+    text-align:left;     
+    padding:3px;
+    border: 1px solid black;
+}
+
+.fee-border-div{
+    border: 1px solid black;
+    width: 833px;
+    display: block;
+    margin-left: 1px;
+}
+
+
+.total-fees-label{
+    width: 169px;
+    padding:2px;
+    text-align: left;
+}
+.total-fees-caption{
+    width: 110px;
+    padding:2px;
+    text-align: left;
+}
+
+.outstanding-fees-label{
+    width: 140px;
+    padding:4px;
+    text-align: left;
+}
+.total-fees-caption{
+    width: 130px;
+    padding:4px;
+    text-align: left;
+}
+
+header h1 {
+    margin-right: 200px;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.score-in-subject-heading{
+    margin-left: 353px; 
+    height: 20px; 
+    background-color: #CECBCE; 
+    font-weight: bold;
+    font-size:13px; 
+    padding-top: 5px; 
+    border-top-left-radius: 2px; 
+    border-top-right-radius: 2px;
+    padding-left: 10px;
+    width:480px;
+}
+
+.score-traitsHeading-no-bg-color{
+    height: 20px;  
+    font-weight: bold;
+    font-size:13px; 
+    padding-top: 5px; 
+    border-top-left-radius: 2px; 
+    border-top-right-radius: 2px;
+    padding-left: 10px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.score-traitsHeading{
+    height: 20px; 
+    background-color: #CECBCE; 
+    font-weight: bold;
+    font-size:13px; 
+    padding-top: 5px; 
+    border-top-left-radius: 2px; 
+    border-top-right-radius: 2px;
+    padding-left: 10px;
+    width:835px;
+}
+
+.work-habit-score-wrapper{
+    width:283px;
+    background-color: #EFF0F1;
+    vertical-align:top;
+}
+
+.social-habit-score-wrapper{
+    width:283px;
+    background-color: #ECF3EF;
+    vertical-align:top;
+}
+
+.personal-habit-score-wrapper{
+    width:283px;
+    background-color: #EDEDEE;
+    vertical-align:top;
+}
+
+.habit-score-repeater-td{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align:left;
+    word-wrap: break-word;
+     border: 1px solid #000;
+}
+
+.habit-score-repeater-Label{
+    font-weight: bold;
+    border: 1px solid #000;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 3px;
+    text-align: center;
+    max-width: 30px;
+}
+
+.habit-score-traits-sub-heading{
+    height: 20px; 
+    font-weight: bold;
+    font-size:12px !important; 
+    padding-top:5px; 
+    border-top-left-radius: 2px; 
+    border-top-right-radius: 2px;
+    padding-left: 10px;
+    text-align: center;
+}
+
+.report-card-comment-td{
+    width: 500px;
+}
+
+.report-card-calender-td{
+    width: 150px;
+    vertical-align: top;
+}
+
+.report-card-calender-td table td{
+      border: 1px solid black;
+      padding: 5px 5px;
+      font-weight: bold;
+}
+.comment-label{
+    width:150px;
+    font-weight:bold;
+    font-size:11px;
+    text-align:right;
+    padding-right:5px;
+}
+.comment-caption{
+    font-size:11px;
+    text-align:left;
+}
+
+.underline-td{
+ border-bottom: #000 solid 2px;
+}
+
+.printed-date{
+    width:100px;
+    font-weight:bold;
+    font-size:11px;
+    text-align:left;
+    padding-left:5px;
+    word-wrap: break-word;
+}
+
+.company-info{
+    width:180px;
+    z-index: 10;
+    margin-bottom: -10px;
+    margin-left:300px;
+    margin-right:300px;
+    background-color:#999;
+    border-radius:5px 10px 5px;
+    font-size: 11px;
+}
+
+page {
+  background: black;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+  box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+page[size="A4"] {  
+  width: 21cm;
+  height: 29.7cm; 
+}
+page[size="A4"][layout="portrait"] {
+  width: 29.7cm;
+  height: 21cm;  
+}
+page[size="A3"] {
+  width: 29.7cm;
+  height: 42cm;
+}
+page[size="A3"][layout="portrait"] {
+  width: 42cm;
+  height: 29.7cm;  
+}
+page[size="A5"] {
+  width: 14.8cm;
+  height: 21cm;
+}
+page[size="A5"][layout="portrait"] {
+  width: 21cm;
+  height: 14.8cm;  
+}
+
+
+@media print {
+    *{
+        -webkit-print-color-adjust: exact; 
+    }
+    .report-page-wrapper{
+        -webkit-print-color-adjust: exact; 
+    }
+    
+    page{
+         margin: 0;
+    box-shadow: 0;
+    }
+
+    #pageBreaker {
+        page-break-after: always !important;
+    }
+
+    .academic-session-wrapper table {
+        font-size: 11px;
+    }
+
+    .report-page-wrapper{
+        border: thin solid #8F8E8E;
+    }
+
+    .report-page-wrapper table{
+        font-family: Tahoma, Geneva, sans-serif;
+        font-size: 11px;
+    }
+
+    #studentBiodata-wrapper table td{
+        font-size: 11px;
+    }
+} 
+

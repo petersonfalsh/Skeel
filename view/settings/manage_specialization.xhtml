@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../WEB-INF/templates/adminTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title_additional_caption">
+        ::- Settings
+
+
+    </ui:define>
+
+    <ui:define name="additional_css_jscript">
+        <link rel="stylesheet" href="#{request.contextPath}/resources/css/personnel-profile.css"/>
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/common.css" />
+
+        <link rel="stylesheet" type="text/css" href="#{request.contextPath}/vendor/fancybox/jquery.fancybox.css"/>
+
+
+        <script src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+        <script src="#{request.contextPath}/vendor/select2-4.0.3/js/select2.min.js"></script>
+
+    </ui:define>
+
+    <ui:define name="page_toolbar_left">
+        Manage Specialization
+    </ui:define>
+
+    <ui:define name="page_toolbar_right">
+
+    </ui:define>
+
+    <ui:define name="content">
+        <div class="row">
+            <div class="col-md-12">
+                <h:form prependId="false">
+                    <h:panelGroup id="searchPanel" layout="block">
+                        <div style="margin-bottom: 10px; margin-top: 20px;">
+
+
+                            <h:inputText id="txt_srch_description" styleClass="form-control input-sm"
+                                         value="#{areaOfSpecializationBacking.searchDescription}" style="width: 200px;display: inline-block; margin-left: 10px;" 
+                                         title="Search by description" autocomplete="off" />
+
+
+                            <h:selectOneMenu id="sel_printing_status" class="form-control input-sm"
+                                             style="width: 150px; display: inline-block; margin-left: 10px;" 
+                                             value="#{areaOfSpecializationBacking.searchRecordStatus}"
+                                             title="Select Record Status">
+                                <f:selectItem itemLabel="Select Record Status" itemValue="" />
+                                <f:selectItems value="#{applicationBackingCode.recordStatus}" />
+                            </h:selectOneMenu>
+
+
+                            <p:commandLink actionListener="#{areaOfSpecializationBacking.searchAction}"
+                                           styleClass="btn btn-primary btn-sm" style="margin-left: 20px;"
+                                           process="searchPanel" update="gridPanel,recordPanel">
+                                <i class="fa fa-search"></i> Search
+                            </p:commandLink>
+
+                            <p:commandLink actionListener="#{areaOfSpecializationBacking.resetAction}"
+                                           styleClass="btn btn-default btn-sm" style="margin-left: 5px; display: none;"
+                                           process="searchPanel" update="recordPanel,gridPanel">
+                                <i class="fa fa-eraser"></i> Reset
+                            </p:commandLink>
+
+                        </div>
+                    </h:panelGroup>
+
+                    <!-- Pagination and description -->
+                    <div style="margin-top: 40px;margin-bottom: 5px;">
+                        <h:panelGroup layout="block" id="gridPanel">
+
+                            <div class="pull-left">                        
+                                <div class="btn-group btn-group-sm" role="group"
+                                     style="display: inline-block;font-weight: bold;">                            
+                                    <p:commandLink type="button" 
+                                                   class="btn btn-default btn-sm" value="&laquo;" 
+                                                   process="@this" update="gridPanel" 
+                                                   action="#{areaOfSpecializationBacking.pageFirst}"
+                                                   disabled="#{areaOfSpecializationBacking.showFirstPrev}"/>
+                                    <p:commandLink type="button" class="btn btn-default btn-sm" value="&lt;" 
+                                                   process="@this" update="gridPanel"
+                                                   action="#{areaOfSpecializationBacking.pagePrevious}"
+                                                   disabled="#{areaOfSpecializationBacking.showFirstPrev}"/>
+                                    <p:commandLink type="button" class="btn btn-default btn-sm" value="&gt;"
+                                                   process="@this" update="gridPanel"
+                                                   action="#{areaOfSpecializationBacking.pageNext}"
+                                                   disabled="#{areaOfSpecializationBacking.showNextLast}"/>
+                                    <p:commandLink type="button" class="btn btn-default btn-sm" value="&raquo;"
+                                                   process="@this" update="gridPanel"
+                                                   action="#{areaOfSpecializationBacking.pageLast}"
+                                                   disabled="#{areaOfSpecializationBacking.showNextLast}"/>
+                                </div>
+
+                                <div style="display: inline-block;margin-left: 20px;">
+                                    #{areaOfSpecializationBacking.paginationDescription}
+                                </div>
+
+                            </div>
+
+                            <div class="pull-right">
+                                <a class="btn btn-primary btn-sm" href="#" style="display: block; 
+                                   background: #8E87CC !important; border-radius: 10px; text-transform: none !important; font-size: 14px !important;"
+                                   onclick="openFancyBoxIframe('#{request.contextPath}/view/settings/add_new_area_of_specialization.xhtml', 600, 290); return false;">
+                                    <i class="fa fa-plus-circle"></i> Create A New Area of Specialization
+                                </a>
+                            </div>
+
+
+                            <div class="clearfix"></div>
+
+                            <div class="table-no-white-wrapper" style="margin-top:10px;">
+                                <table class="table table-bordered table-hover personnel-list">
+                                    <thead>
+                                        <tr>
+                                            <th width="30" style="display: none;"></th>
+                                            <th width="40">S/N</th>
+                                            <th>Area of Specialization</th>       
+                                            <th>Status</th>       
+                                            <th width="30"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <ui:repeat var="record" value="#{areaOfSpecializationBacking.recordList}" >
+                                            <tr>
+                                                <td width="30" style="display: none;">
+                                                    <a href="#"
+                                                       class="btn btn-sm btn-info" title="View Profile">
+                                                        <i class="fa fa-check"></i>
+                                                    </a>
+                                                </td>                                            
+                                                <td width="40">#{record.displaySerialNo}</td>
+                                                <td>#{record.areaOfSpecializationDescription}</td>
+                                                <td>#{record.recordStatus}</td>
+
+                                                <td width="30">
+                                                    <a href="#"
+                                                       onclick="openFancyBoxIframe('#{request.contextPath}/view/settings/update_area_of_specialization.xhtml?vhsuYagsh62fshkfd=#{record.recordSelector}', 600, 350); return false;"
+                                                       class="btn btn-sm btn-danger" title="View Area of Specialization Details">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+
+                                                </td>
+                                            </tr>
+                                        </ui:repeat>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </h:panelGroup>
+                    </div>
+
+                    <h:panelGroup layout="block" id="recordPanel">
+
+                    </h:panelGroup>
+
+                </h:form>
+            </div>
+
+
+        </div>
+
+
+        <script type="text/javascript" src="#{request.contextPath}/vendor/fancybox/jquery.fancybox.js"></script>
+        <script src="#{request.contextPath}/vendor/jquery.nicescroll-v3.6.8/jquery.nicescroll.min.js"></script>
+
+        <script type="text/javascript">
+                                                           $(document).ready(function () {
+                                                               $("#profile-leftnav").niceScroll({cursorcolor: "#009E54"});
+                                                           });
+                                                           function openFancyBoxImage(url, title) {
+                                                               $.fancybox.open({
+                                                                   autoSize: false,
+                                                                   width: '80%',
+                                                                   height: '90%',
+                                                                   href: '' + url + '',
+                                                                   title: title,
+                                                                   padding: 2,
+                                                                   transitionIn: 'elastic',
+                                                                   transitionOut: 'elastic',
+                                                                   helpers: {
+                                                                       overlay: {
+                                                                           closeClick: false
+                                                                       }
+                                                                   }
+                                                               });
+                                                               return false;
+                                                           }
+
+                                                           function openFancyBoxPdf(url, title) {
+                                                               $.fancybox.open({
+                                                                   autoSize: false,
+                                                                   width: 900,
+                                                                   height: 650,
+                                                                   href: '' + url + '',
+                                                                   title: title,
+                                                                   type: 'iframe',
+                                                                   padding: 2,
+                                                                   transitionIn: 'elastic',
+                                                                   transitionOut: 'elastic',
+                                                                   helpers: {
+                                                                       overlay: {
+                                                                           closeClick: false
+                                                                       }
+                                                                   }
+                                                               });
+                                                               return false;
+                                                           }
+
+                                                           function openFancyBoxIframe(url, cWidth, cHeight) {
+                                                               $.fancybox.open({
+                                                                   autoSize: false,
+                                                                   width: cWidth,
+                                                                   height: cHeight,
+                                                                   href: '' + url + '',
+                                                                   type: 'iframe',
+                                                                   padding: 2,
+                                                                   transitionIn: 'elastic',
+                                                                   transitionOut: 'elastic',
+                                                                   helpers: {
+                                                                       overlay: {
+                                                                           closeClick: false
+                                                                       }
+                                                                   },
+                                                                   afterClose: function () { // USE THIS IT IS YOUR ANSWER THE KEY WORD IS "afterClose"
+                                                                       parent.location.reload(true);
+                                                                   }
+                                                               });
+                                                               return false;
+                                                           }
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('form').find("#txt_srch_file_no").each(function (ev)
+                {
+                    if (!$(this).val()) {
+                        $(this).attr("placeholder", "Search by File No.");
+                    }
+                });
+                $('form').find("#txt_srch_surname").each(function (ev)
+                {
+                    if (!$(this).val()) {
+                        $(this).attr("placeholder", "Search by Surname");
+                    }
+                });
+                $('form').find("#txt_srch_other_names").each(function (ev)
+                {
+                    if (!$(this).val()) {
+                        $(this).attr("placeholder", "Search by Other Names");
+                    }
+                });
+            });
+        </script>
+
+    </ui:define>
+</ui:composition>
